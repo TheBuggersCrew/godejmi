@@ -1,0 +1,165 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+body {
+    background-image: url("/img/background.png");
+}
+
+.quizContainer {
+    font-family: "Roboto";
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: rgb(255, 0, 0, 0.67);
+    width: 800px;
+    height: 450px;
+    color: white;
+    border-radius: 20px;
+}
+
+div.question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+div.question h1 {
+    line-height: 30px;
+    font-size: 24px;
+}
+
+div.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    width: 100%;
+    height: 60%;
+}
+
+div.option {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border: 1px white solid;
+    height: 55px;
+    width: 70%;
+    transition: 0.2s;
+}
+
+div.option:hover {
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+
+}
+
+div.option.active div.circle {
+    background-image: url("/img/ico.png");
+    background-position: center;
+    background-size: contain;
+}
+
+div.circle {
+    margin-left: 15px;
+    width: 25px;
+    height: 25px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+h2.answer {
+    font-size: 16px;
+    margin-left: 10px;
+    line-height: 21px;
+}
+
+div.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+div.progressBar {
+    position: relative;
+    width: 180px;
+    height: 8px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #4a4e65;
+}
+
+div.progressBarbefore {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    transform: translate(0, -50%);
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 15px;
+    background-color:  white;
+    background-size: 40px 40px;
+    background-image: linear-gradient(135deg, rgba(205,204,204,0.5) 25%, transparent 25%,
+    transparent 50%, rgba(205,204,204,0.5) 50%,
+    rgba(205,204,204,0.5) 75%, transparent 75%,
+    transparent);
+    animation: animate-stripes 4s linear infinite;
+}
+.progresstext {
+    font-size: 14px;
+    margin-right: 35px;
+}
+button {
+    color: rgb(240, 61, 61, 1);
+    font-weight: 500;
+    padding: 7px 15px;
+    width: 120px;
+    background-color: white;
+    border: none;
+    transform: scale(0);
+}
+
+button.active {
+    animation: showBtn 0.4s;
+    transform: scale(1);
+    transition: 0.2s;
+}
+button.active:hover {
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+}
+div.option.active {
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+}
+
+.result {
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 500px;
+    color: white;
+    font-size: 30px;
+    border: 1px solid white;
+}
+
+@keyframes animate-stripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 80px 0; }
+}
+@keyframes showBtn {
+    0% {
+        transform: scale(0)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
