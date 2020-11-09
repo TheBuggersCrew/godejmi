@@ -20,8 +20,6 @@ Route::group([
     'middleware' => 'api'
 ], function () {
     Route::get('draw', [DrawController::class, 'get']);
-    Route::get('questions', [QuestionsController::class, 'get']);
-    Route::post('questions/check', [QuestionsController::class, 'check']);
-
-    Route::get('questions/{question_id}/answers', [QuestionsController::class, 'getAnswers']);
+    Route::get('questions', [QuestionsController::class, 'getQuestionsWithAnswers']);
+    Route::post('questions/check', [QuestionsController::class, 'checkAnswers']);
 });

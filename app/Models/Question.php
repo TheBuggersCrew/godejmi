@@ -16,9 +16,16 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
-    public function checkAnswer(int $question_id, string $answer)
+    public function checkAnswer(int $answerId)
     {
-        $question = Question::findOrFail($question_id);
-        return $question->correctAnswer === $answer;
+        return $answerId ===
+            (int)$this->answers()
+                ->where('is_correct', 1)
+                ->pluck('id')->first();
+    }
+
+    public static function getRandomQuestions(int $amount)
+    {
+        return Question::inRandomOrder()->limit($amount)->get(['id', 'content']);
     }
 }
