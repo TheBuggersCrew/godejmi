@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\DrawController;
+use App\Http\Controllers\Api\QuestionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'middleware' => 'api'
+], function () {
+    Route::get('draw', [DrawController::class, 'get']);
+    Route::get('questions', [QuestionsController::class, 'get']);
+    Route::post('questions/check', [QuestionsController::class, 'check']);
+
+    Route::get('questions/{question_id}/answers', [QuestionsController::class, 'getAnswers']);
 });
