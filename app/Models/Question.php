@@ -9,23 +9,31 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content'];
+    protected $fillable = ['text'];
 
     public function answers()
     {
         return $this->hasMany(Answer::class);
     }
 
-    public function checkAnswer(int $answerId)
+    /***
+     * @return array
+     */
+    public function getAnswers()
     {
-        return $answerId ===
-            (int)$this->answers()
+        return $this->answers()->pluck('text')->toArray();
+    }
+
+    public function checkAnswer(string $answer)
+    {
+        return $answer ==
+            $this->answers()
                 ->where('is_correct', 1)
-                ->pluck('id')->first();
+                ->pluck('text')->first();
     }
 
     public static function getRandomQuestions(int $amount)
     {
-        return Question::inRandomOrder()->limit($amount)->get(['id', 'content']);
+        return Question::inRandomOrder()->limit($amount)->get(['id', 'text']);
     }
 }

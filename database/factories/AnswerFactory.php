@@ -23,7 +23,7 @@ class AnswerFactory extends Factory
     public function definition()
     {
         return [
-            'content' => $this->faker->name,
+            'text' => $this->faker->name,
             'question_id' => array_rand(Question::pluck('id')->toArray()),
             'is_correct' => (bool)random_int(0, 1)
         ];

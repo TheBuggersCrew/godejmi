@@ -1,6 +1,7 @@
 <template>
     <div>
         <nav class="navbar navbar-light border-bottom">
+
             <router-link class="navbar-brand mr-auto" :to="{name: 'index'}">Index</router-link>
             <router-link class="navbar-brand mr-auto" :to="{name: 'quiz'}"></router-link>
         </nav>
@@ -12,7 +13,8 @@
 
 <script>
 export default {
-    name: "App"
+    name: "App",
+    props: ['isAuthorized']
 }
 </script>
 

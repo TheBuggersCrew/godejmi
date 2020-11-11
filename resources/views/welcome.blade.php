@@ -15,7 +15,7 @@
 </head>
 <body class="antialiased">
 <div class="container-fluid" id="app">
-    <app></app>
+    <app :is-authorized=123></app>
 </div>
 </body>
 </html>

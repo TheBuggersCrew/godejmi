@@ -23,3 +23,4 @@ Route::group([
     Route::get('questions', [QuestionsController::class, 'getQuestionsWithAnswers']);
     Route::post('questions/check', [QuestionsController::class, 'checkAnswers']);
 });
+
