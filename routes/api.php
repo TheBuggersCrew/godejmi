@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'middleware' => 'api'
+    'middleware' => 'web'
 ], function () {
     Route::get('draw', [DrawController::class, 'get']);
     Route::get('questions', [QuestionsController::class, 'getQuestionsWithAnswers']);
