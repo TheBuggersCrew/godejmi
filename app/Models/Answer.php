@@ -11,6 +11,9 @@ class Answer extends Model
 
     protected $fillable = ['text', 'question_id', 'is_correct'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function question()
     {
         return $this->belongsTo(Question::class);

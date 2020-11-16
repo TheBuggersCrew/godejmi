@@ -41,7 +41,7 @@ class QuestionsController extends Controller
         $data = json_decode($request->getContent(), true);
         $check = 1;
 
-        if(count($data) < 4) {
+        if(count($data) !== 4) {
             $check = 0;
             $msg = 'Powinny byc 4 odpowiedzi ;]';
         } else {
@@ -49,6 +49,7 @@ class QuestionsController extends Controller
                 $question = Question::findOrFail($question_id);
                 if(!$question->checkAnswer($answer)) {
                     $check = 0;
+                    $msg = 'Error. Zła odpowiedź na któreś z pytań.';
                 }
             }
         }
@@ -56,8 +57,6 @@ class QuestionsController extends Controller
         if($check) {
             $msg = 'Odpowiedzi poprawne, jestes autoryzowanym buggerem.';
             $request->session()->push('is_authorized', true);
-        } else {
-            $msg = 'Chyba nie jestes prawdziwym buggerem... Nara.';
         }
 
         return response()->json([

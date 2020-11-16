@@ -11,6 +11,9 @@ class Question extends Model
 
     protected $fillable = ['text'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function answers()
     {
         return $this->hasMany(Answer::class);
@@ -24,14 +27,22 @@ class Question extends Model
         return $this->answers()->pluck('text')->toArray();
     }
 
+    /**
+     * @param string $answer
+     * @return bool
+     */
     public function checkAnswer(string $answer)
     {
-        return $answer ==
+        return $answer ===
             $this->answers()
                 ->where('is_correct', 1)
                 ->pluck('text')->first();
     }
 
+    /**
+     * @param int $amount
+     * @return mixed
+     */
     public static function getRandomQuestions(int $amount)
     {
         return Question::inRandomOrder()->limit($amount)->get(['id', 'text']);
