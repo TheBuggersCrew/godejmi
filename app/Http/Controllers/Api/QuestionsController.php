@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Answer;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Question;
+use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
 {
@@ -38,16 +36,16 @@ class QuestionsController extends Controller
      */
     public function checkAnswers(Request $request)
     {
-        $data = json_decode($request->getContent(), true);
+        $data = json_decode($request->getContent());
         $check = 1;
 
-        if(count($data) !== 4) {
+        if(count($data) !== 5) {
             $check = 0;
-            $msg = 'Powinny byc 4 odpowiedzi ;]';
+            $msg = 'Powinno byc 5 odpowiedzi ;]';
         } else {
-            foreach($data as $question_id => $answer) {
-                $question = Question::findOrFail($question_id);
-                if(!$question->checkAnswer($answer)) {
+            foreach($data as $question) {
+                $question = Question::findOrFail((int)$question->id);
+                if(!$question->checkAnswer((string)$question->answer)) {
                     $check = 0;
                     $msg = 'Error. Zła odpowiedź na któreś z pytań.';
                 }

@@ -15,7 +15,7 @@
 </head>
 <body class="antialiased">
 <div class="container-fluid" id="app">
-    <app :is-authorized=123></app>
+    <app :is-authorized={{ session()->get('is_authorized') ?: 0 }}></app>
 </div>
 </body>
 </html>
