@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <result v-else class="quizContainer">
+        <result :results="results" v-else class="quizContainer">
             <p v-for="(result, i) in results" :key="i">{{ result }}</p>
         </result>
     </div>
@@ -89,10 +89,6 @@ export default {
     padding: 0px;
     box-sizing: border-box;
     font-family: "Nunito";
-}
-
-body {
-    background-image: url("/img/background.png");
 }
 
 .quizContainer {

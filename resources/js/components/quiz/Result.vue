@@ -13,6 +13,18 @@ export default {
         return {
             validationConfirmed: false,
         }
+    },
+    props:["results"],
+    methods: {
+        async sendResults() {
+            await axios.post('/api/questions/check', this.results).then(response => {
+                this.validationConfirmed = response.data 
+            })
+        }
+    },
+    beforeMount() {
+        this.sendResults()
     }
+    
 }
 </script>
