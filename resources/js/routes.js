@@ -12,7 +12,7 @@ const routes = [
         path: "/quiz",
         component: Quiz,
         name: "quiz"
-    }
+    },
 ];
 
 const router = new VueRouter({
