@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'middleware' => 'web'
 ], function () {
-    Route::get('draw', [DrawController::class, 'get']);
+    Route::get('draw', [DrawController::class, 'index']);
     Route::get('questions', [QuestionsController::class, 'getQuestionsWithAnswers']);
     Route::post('questions/check', [QuestionsController::class, 'checkAnswers']);
 });
