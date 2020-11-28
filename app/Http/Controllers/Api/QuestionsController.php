@@ -43,9 +43,9 @@ class QuestionsController extends Controller
             $check = 0;
             $msg = 'Powinno byc 5 odpowiedzi ;]';
         } else {
-            foreach($data as $question) {
-                $question = Question::findOrFail((int)$question->id);
-                if(!$question->checkAnswer((string)$question->answer)) {
+            foreach($data as $answer) {
+                $question = Question::findOrFail((int)$answer->id);
+                if(!$question->checkAnswer((string)$answer->answer)) {
                     $check = 0;
                     $msg = 'Error. Zła odpowiedź na któreś z pytań.';
                 }
