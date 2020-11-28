@@ -1,6 +1,7 @@
 import VueRouter from "vue-router";
 import Index from "./components/Index";
 import Quiz from "./components/Quiz"
+import Test from "./components/Test"
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         component: Quiz,
         name: "quiz"
     },
+    {
+        path: '/test',
+        component: Test,
+        name: 'test',
+    }
 ];
 
 const router = new VueRouter({

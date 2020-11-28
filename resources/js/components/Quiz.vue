@@ -20,9 +20,9 @@
             </div>
         </div>
 
-        <div v-else class="quizContainer">
+        <result v-else class="quizContainer">
             <p v-for="(result, i) in results" :key="i">{{ result }}</p>
-        </div>
+        </result>
     </div>
     <div v-else>Loading...</div>
 </template>
@@ -30,6 +30,7 @@
 
 <script>
 import progressBar from './quiz/ProgressBar'
+import result from './quiz/Result'
 
 export default {
     data(){
@@ -43,7 +44,8 @@ export default {
     },
 
     components: {
-        progressBar
+        progressBar,
+        result
     },
 
     beforeCreate() {

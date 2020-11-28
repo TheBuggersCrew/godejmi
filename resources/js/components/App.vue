@@ -4,6 +4,7 @@
 
             <router-link class="navbar-brand mr-auto" :to="{name: 'index'}">Index</router-link>
             <router-link class="navbar-brand mr-auto" :to="{name: 'quiz'}"></router-link>
+            <router-link class="navbar-brand mr-auto" :to="{name: 'test'}">Test</router-link>
         </nav>
         <div class="container-fluid p-3">
             <router-view></router-view>
