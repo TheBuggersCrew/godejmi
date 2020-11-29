@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Draw;
 use Illuminate\Http\Request;
 
 class DrawController extends Controller
 {
-    public function __construct()
+    public function index()
     {
-
-    }
-
-    public function get()
-    {
-        echo 'alfred';
+        $nickname = Draw::getOneNickname();
+        return json_encode([
+            'nickname' => $nickname
+        ]);
     }
 }
