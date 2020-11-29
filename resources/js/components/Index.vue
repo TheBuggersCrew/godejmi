@@ -5,16 +5,22 @@
             <h2>Musisz zdać egzamin zanim przejdziesz do strony. Podawaj swoje odpowiedzi poprawnie ponieważ tylko 100% skuteczności pozwoli Ci zalogować się na stronę.</h2>
             <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }">Quiz</router-link></h1>
         </div>
+        <router-view/>
+        
     </div>
 </template>
 
 <script>
+
+
 export default {
     name: "Index",
 }
 </script>
 
+
 <style scoped>
+
     h1 {
         margin-top: 40px;
         text-align: center;
@@ -56,7 +62,6 @@ export default {
     text-decoration: none;
     }
     .wrapper {
-        /* border-radius: 20px; */
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         width: 600px;
         padding: 10px 20px;
@@ -69,5 +74,28 @@ export default {
         div.container {
             margin-top: 150px;
         }
+    }
+    
+    @keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    }
+
+    .fadeInDown {
+    animation-name: fadeInDown;
+    }
+
+    .quiz-enter-active {
+        animation: fadeInDown 1s,
+    }
+    .quiz-leave-active {
+        animation: fadeInDown 1s reverse,
     }
 </style>

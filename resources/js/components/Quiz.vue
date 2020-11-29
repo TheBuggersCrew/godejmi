@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!loading">
+    <div v-if="!loading" class="page">
         <div class="quizContainer" v-if="questionCounter <= questions.length">
             <div class="question">
                 <h1 v-if="questionCounter < questions.length">{{ questions[questionCounter].text }}</h1>
@@ -242,4 +242,5 @@ div.option.active {
         opacity: 1;
     }
 }
+ 
 </style>
