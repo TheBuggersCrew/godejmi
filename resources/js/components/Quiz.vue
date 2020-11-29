@@ -16,7 +16,12 @@
                 <div class="progresstext">
                     <p v-if="questionCounter < (questions.length)"> Pytanie {{ questionCounter + 1 }} z {{ questions.length }}</p>
                 </div>
-                <button :class="{active: (activeItem || activeItem === 0)}" v-on:click="nextQuestion">Dalej</button>
+                <div class="button-wrapper">
+                    <transition name="bounce">
+                        <button v-if="showButton" v-on:click="nextQuestion">Dalej</button>
+                    </transition>
+                </div>
+                
             </div>
         </div>
 
@@ -36,10 +41,11 @@ export default {
     data(){
         return {
             questions: [],
-            questionCounter: 0,
-            activeItem: null,
             results: [],
-            loading: false
+            questionCounter: 0,
+            showButton: false,
+            activeItem: null,
+            loading: false,
         }
     },
 
@@ -70,6 +76,7 @@ export default {
 
             this.questionCounter++
             this.activeItem = null;
+            this.showButton = false;
 
             
 
@@ -77,6 +84,7 @@ export default {
 
         selectItem(i) {
             this.activeItem = i;
+            this.showButton = true;
         }
     }
 }
@@ -182,7 +190,11 @@ button {
     width: 120px;
     background-color: white;
     border: none;
-    transform: scale(0);
+}
+.button-wrapper {
+    color: rgb(240, 61, 61, 1);
+    width: 120px;
+    height: 40px;
 }
 
 button.active {
@@ -206,4 +218,27 @@ div.option.active {
     border: 1px solid white;
 }
 
+.bounce-enter-active{
+    animation: bounceIn 0.4s  ease
+}
+
+.bounce-leave-active {  
+    animation: bounceIn 0.4s ease reverse;
+
+}
+
+@keyframes bounceIn { 
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 </style>

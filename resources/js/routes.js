@@ -1,7 +1,7 @@
 import VueRouter from "vue-router";
 import Index from "./components/Index";
-import Quiz from "./components/Quiz"
-import Test from "./components/Test"
+import Quiz from "./components/Quiz";
+import Test from "./components/Test";
 
 const routes = [
     {
@@ -18,6 +18,11 @@ const routes = [
         path: '/test',
         component: Test,
         name: 'test',
+    },
+    {
+        path: '/homepage',
+        component: HomePage
+        name: 'homepage'
     }
 ];
 

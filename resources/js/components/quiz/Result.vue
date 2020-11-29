@@ -25,8 +25,6 @@ export default {
             .then(response => {
             this.validationConfirmed = response.data.success;
             this.loading = false})
-        
     }
-    
 }
 </script>
