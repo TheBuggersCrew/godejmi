@@ -2,6 +2,7 @@ import VueRouter from "vue-router";
 import Index from "./components/Index";
 import Quiz from "./components/Quiz";
 import Test from "./components/Test";
+import HomePage from './components/homepage/HomePage'
 
 const routes = [
     {
@@ -21,9 +22,9 @@ const routes = [
     },
     {
         path: '/homepage',
-        component: HomePage
-        name: 'homepage'
-    }
+        component: HomePage,
+        name: 'homepage',
+    },
 ];
 
 const router = new VueRouter({

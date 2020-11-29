@@ -7,6 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
+* {
+    font-family: "Nunito";
+    box-sizing: border-box
+}
+
 body {
     background-image: url("/img/background.png");
 }

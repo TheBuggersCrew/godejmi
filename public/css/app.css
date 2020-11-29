@@ -10903,6 +10903,11 @@ a.text-dark:focus {
   }
 }
 
+* {
+  font-family: "Nunito";
+  box-sizing: border-box;
+}
+
 body {
   background-image: url("/img/background.png");
 }

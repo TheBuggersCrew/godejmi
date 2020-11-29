@@ -137,6 +137,7 @@ div.options {
 }
 
 div.option {
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin: 0 auto;

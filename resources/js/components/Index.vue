@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="col-10 offset-1 text-center">
+        <div class="wrapper">
             <h1>Achtung! <br>Jesteś nieautoryzowanym buggerem!</h1>
             <h2>Musisz zdać egzamin zanim przejdziesz do strony. Podawaj swoje odpowiedzi poprawnie ponieważ tylko 100% skuteczności pozwoli Ci zalogować się na stronę.</h2>
             <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }">Quiz</router-link></h1>
@@ -16,12 +16,15 @@ export default {
 
 <style scoped>
     h1 {
-        margin-top: 70px;
+        margin-top: 40px;
+        text-align: center;
     }
     h2 {
         font-size: 20px;
+        text-align: center;
     }
     .container {
+        margin-top: 200px;
         font-family: "Nunito";
         display: flex;
         flex-direction: column;
@@ -35,18 +38,36 @@ export default {
     }
 
     .quiz-btn {
-        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+        transition: 0.2s;
+        display: block;
         width: 250px;
-        color: rgb(240, 61, 61, 1);
+        color: white;
         font-weight: 500;
         padding: 7px 15px;
-        background-color: white;
+        background-color: rgb(255, 0, 0, 0.67);
         border: none;
+        margin-bottom: 40px;
     }
 
     .quiz-btn:hover {
-    box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+    box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.67);
     text-decoration: none;
-}
-    
+    }
+    .wrapper {
+        /* border-radius: 20px; */
+        box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+        width: 600px;
+        padding: 10px 20px;
+        color: rgb(255, 0, 0, 0.67);
+        background-color: #ffffff;
+        margin:75px auto;
+    }
+
+    @media (orientation: portrait) {
+        div.container {
+            margin-top: 150px;
+        }
+    }
 </style>
