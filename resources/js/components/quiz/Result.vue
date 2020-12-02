@@ -39,6 +39,7 @@ export default {
 </script>
 
 <style scoped>
+    
     div {
         font-family: Nunito;
         text-align: center;
@@ -67,4 +68,10 @@ export default {
     h1 {
         margin-top: 150px;
     }
+
+</style>
+
+<style>
+    @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+    
 </style>

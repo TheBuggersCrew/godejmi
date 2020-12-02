@@ -9,6 +9,7 @@ import App from "./components/App";
 import Index from "./components/Index";
 import Quiz from "./components/Quiz";
 require('./bootstrap');
+require("animate.css")
 
 window.Vue = require('vue');
 Vue.use(VueRouter);
@@ -26,6 +27,8 @@ Vue.use(VueRouter);
 
 Vue.component('App', require('./components/App.vue').default);
 Vue.component('Quiz', require('./components/Quiz.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
