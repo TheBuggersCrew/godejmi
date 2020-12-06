@@ -7,9 +7,9 @@ import VueRouter from "vue-router";
 import router from "./routes";
 import App from "./components/App";
 import Index from "./components/Index";
-import Quiz from "./components/Quiz";
+import Quiz from "./components/quiz/Quiz";
 require('./bootstrap');
-require("animate.css")
+require("animate.css");
 
 window.Vue = require('vue');
 Vue.use(VueRouter);
@@ -26,7 +26,7 @@ Vue.use(VueRouter);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('App', require('./components/App.vue').default);
-Vue.component('Quiz', require('./components/Quiz.vue').default);
+Vue.component('Quiz', require('./components/quiz/Quiz.vue').default);
 
 
 

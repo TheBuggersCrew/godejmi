@@ -12,10 +12,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 </head>
 <body class="antialiased">
 <div class="container-fluid" id="app">
-    <app :is-authorized={{ session()->get('is_authorized') ?: 0 }}></app>
+    <app :is-authorized={{ session()->get("is_authorized") ?: 0 }}></app>
 </div>
 </body>
 </html>

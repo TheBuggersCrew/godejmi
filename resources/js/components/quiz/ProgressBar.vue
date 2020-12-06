@@ -25,7 +25,7 @@ export default {
             if(this.questionCounter < this.divider) {
                 let animation = setInterval(() => {
                     if(this.barPosition < newBarPosition) {
-                        this.barPosition = this.barPosition + 1
+                        this.barPosition = this.barPosition + 0.5
                     }
                     else {
                         clearInterval(animation)

@@ -3,25 +3,35 @@
         <div class="wrapper">
             <h1>Achtung! <br>Jesteś nieautoryzowanym buggerem!</h1>
             <h2>Musisz zdać egzamin zanim przejdziesz do strony. Podawaj swoje odpowiedzi poprawnie ponieważ tylko 100% skuteczności pozwoli Ci zalogować się na stronę.</h2>
-            <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }">Quiz</router-link></h1>
+            <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }" 
+            @changeAnimationHomePage="changeAnimationHomePage">Quiz</router-link></h1>
         </div>
-        <router-view/>
+        
         
     </div>
 </template>
 
 <script>
 
-
 export default {
     name: "Index",
+    methods: {
+        changeAnimationHomePage() {
+            this.$emit("changeAnimationHomePage")
+        }
+    }
 }
+
+
 </script>
 
 
 <style scoped>
-
+    * {
+        font-weight: 500;
+    }
     h1 {
+        font-size: 38px;
         margin-top: 40px;
         text-align: center;
     }
@@ -36,7 +46,6 @@ export default {
         flex-direction: column;
         margin: 0 auto;
         margin-top: 50px;
-        background-color: rgb(255, 0, 0, 0.67);
         width: 800px;
         height: 450px;
         color: white;
@@ -45,6 +54,7 @@ export default {
 
     .quiz-btn {
         margin: 0 auto;
+        text-decoration: none;
         text-align: center;
         transition: 0.2s;
         display: block;
@@ -58,16 +68,21 @@ export default {
     }
 
     .quiz-btn:hover {
-    box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.67);
-    text-decoration: none;
+        box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.67);
+        text-decoration: none;
     }
     .wrapper {
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         width: 600px;
         padding: 10px 20px;
         color: rgb(255, 0, 0, 0.67);
-        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.65);
         margin:75px auto;
+        transition: 0.2s;
+    }
+
+    .wrapper:hover {
+        background-color: rgba(255, 255, 255, 1);
     }
 
     @media (orientation: portrait) {

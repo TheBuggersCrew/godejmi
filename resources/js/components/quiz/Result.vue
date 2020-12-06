@@ -10,7 +10,7 @@
             </div>
             
             <div v-else-if="!validationConfirmed">
-               <h1>Wykurwiej!!!!!</h1>
+               <h1>Wypad!!!!!</h1>
             </div>
         </div>
         <div v-else>Loading</div>
