@@ -66,12 +66,33 @@ export default {
     }
 
     h1 {
-        margin-top: 150px;
+        margin-top: 130px;
+        padding: 20px;
+    }
+    p {
+        padding: 20px;
+    }
+    @media (max-width: 620px) {
+        h1 {
+            margin-top: 100px;
+        }
+    
+    }  
+    @media (max-width: 420px) {
+        h1 {
+            margin-top: 110px;
+        }
+    }  
+    @media (max-width: 390px) {
+        h1 {
+            padding: 10px;
+            margin-top: 100px;
+            font-size: 28px;
+        }
+        p{
+            padding: 10px;
+        }
     }
 
 </style>
 
-<style>
-    @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
-    
-</style>

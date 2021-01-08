@@ -1,13 +1,13 @@
 import VueRouter from "vue-router";
-import Index from "./components/Index";
+import EnterWindow from "./components/quiz/EnterWindow";
 import Quiz from "./components/quiz/Quiz";
 import HomePage from './components/homepage/HomePage'
 
 const routes = [
     {
         path: "/",
-        component: Index,
-        name: "index"
+        component: EnterWindow,
+        name: "enterwindow"
     },
     {
         path: "/quiz",

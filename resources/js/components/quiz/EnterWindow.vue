@@ -2,19 +2,17 @@
     <div class="container">
         <div class="wrapper">
             <h1>Achtung! <br>Jesteś nieautoryzowanym buggerem!</h1>
-            <h2>Musisz zdać egzamin zanim przejdziesz do strony. Podawaj swoje odpowiedzi poprawnie ponieważ tylko 100% skuteczności pozwoli Ci zalogować się na stronę.</h2>
+            <h2>Musisz zdać egzamin zanim przejdziesz do strony. Podawaj swoje odpowiedzi poprawnie ponieważ tylko 100% skuteczności pozwoli Ci zalogować się na&nbsp;stronę.</h2>
             <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }" 
             @changeAnimationHomePage="changeAnimationHomePage">Quiz</router-link></h1>
         </div>
-        
-        
     </div>
 </template>
 
 <script>
 
 export default {
-    name: "Index",
+    name: "EnterWindow",
     methods: {
         changeAnimationHomePage() {
             this.$emit("changeAnimationHomePage")
@@ -36,6 +34,7 @@ export default {
         text-align: center;
     }
     h2 {
+        margin-top: 10px;
         font-size: 20px;
         text-align: center;
     }
@@ -46,8 +45,6 @@ export default {
         flex-direction: column;
         margin: 0 auto;
         margin-top: 50px;
-        width: 800px;
-        height: 450px;
         color: white;
         border-radius: 20px;
     }
@@ -87,30 +84,58 @@ export default {
 
     @media (orientation: portrait) {
         div.container {
-            margin-top: 150px;
+            margin-top: 80px;
         }
     }
-    
-    @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
 
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
+    @media (max-width: 768px) {
+        .wrapper {
+            width: 450px;
+        }
+        h1 {
+        font-size: 32px;
+        margin-top: 30px;
     }
+        h2 {
+        font-size: 18px;
+    }}
+    @media (orientation:portrait) and (max-width:520px) {
+        div.container {
+            margin-top: 50px;
+        }
+        .wrapper {
+            width: 390px;
+        }
+        h1 {
+        font-size: 30px;
     }
-
-    .fadeInDown {
-    animation-name: fadeInDown;
+        h2 {
+        font-size: 17px;
+    }}
+    @media (orientation:portrait) and (max-width:420px) {
+         div.container {
+            margin-top: 40px;
+        }
+        .wrapper {
+            width: 350px;
+        }
+        h1 {
+        font-size: 26px;
     }
-
-    .quiz-enter-active {
-        animation: fadeInDown 1s,
+        h2 {
+        font-size: 16px;
+    }}
+    @media (orientation:portrait) and (max-width:380px) {
+        div.container {
+            margin-top: 20px;
+        }
+        .wrapper {
+            width: 300px;
+        }
+        h1 {
+        font-size: 22px;
     }
-    .quiz-leave-active {
-        animation: fadeInDown 1s reverse,
-    }
+        h2 {
+        font-size: 16px;
+    }}
 </style>

@@ -6,8 +6,9 @@
 import VueRouter from "vue-router";
 import router from "./routes";
 import App from "./components/App";
-import Index from "./components/Index";
 import Quiz from "./components/quiz/Quiz";
+import EnterWindow from "./components/quiz/EnterWindow"
+
 require('./bootstrap');
 require("animate.css");
 
@@ -41,7 +42,7 @@ const app = new Vue({
     router,
     components: {
         App,
-        Index,
+        EnterWindow,
         Quiz
     }
 });

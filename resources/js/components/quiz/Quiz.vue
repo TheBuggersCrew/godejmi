@@ -125,7 +125,7 @@ div.question {
     height: 20%;
     width: 85%;
     margin: 0 auto;
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 div.question h1 {
@@ -147,6 +147,7 @@ div.option {
     display: flex;
     align-items: center;
     margin: 0 auto;
+    padding: 10px 0px;
     border: 1px white solid;
     height: 55px;
     width: 70%;
@@ -248,5 +249,124 @@ div.option.active {
         opacity: 1;
     }
 }
- 
+@media (max-width: 1024px) {
+    .quizContainer {
+        width: 700px;
+    }
+    div.question h1 {
+        line-height: 26px;
+        font-size: 22px;
+    }
+    div.option {
+        width: 80%;
+    }
+    div.info {
+        width: 80%;
+    }
+} 
+@media (max-width: 776px) {
+    .quizContainer {
+        width: 600px;
+    }
+    div.question {
+        width: 90%;
+    }
+    div.question h1 {
+        line-height: 26px;
+        font-size: 20px;
+    }
+    div.option {
+        width: 85%;
+        height: 50px;
+    }
+    div.info {
+        width: 85%;
+    }
+    div.progressBar {
+        width: 160px;
+    }
+}
+@media (max-width: 620px) {
+    .quizContainer {
+        width: 400px;
+        margin-top: 100px;
+    }
+    div.question {
+        width: 90%;
+        padding-top:10px;
+    }
+    div.question h1 {
+        line-height: 24px;
+        font-size: 18px;
+    }
+    div.info {
+        width: 85%;
+        flex-direction: column;
+    }
+    div.progressBar {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .progresstext {
+        margin:12px;
+        
+    }
+    .button-wrapper { 
+        height: 50px;
+    }
+    
+    .result p {
+        padding: 20px;
+    }
+    
+}  
+@media (max-width: 420px) {
+    .quizContainer {
+        width: 360px;
+        margin-top: 80px;
+    }
+    div.question h1 {
+        line-height: 20px;
+        font-size: 16px;
+    }
+    h2.answer {
+        font-size: 14px;
+    }
+    div.circle {
+        width: 20px;
+        height: 20px;
+    }
+}  
+@media (max-width: 390px) {
+    .quizContainer {
+        width: 320px;
+        margin-top: 50px;
+    }
+    div.question h1 {
+        line-height: 18px;
+        font-size: 14px;
+    }
+    h2.answer {
+        font-size: 14px;
+    } 
+}
+@media (max-width: 350px) {
+    .quizContainer {
+        width: 290px;
+        margin-top: 30px;
+    }
+    div.question h1 {
+        line-height: 18px;
+        font-size: 13px;
+    }
+    h2.answer {
+        font-size: 13px;
+    }
+    .progresstext {
+        font-size: 13px;
+    }
+    button {
+        font-size: 13px;
+    }
+}   
 </style>
