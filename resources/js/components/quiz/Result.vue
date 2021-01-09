@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="!loading"> 
+        <div v-if="!loading" class="wrapper"> 
             <div v-if="validationConfirmed" class="result">
                 <h1>Gratulacje test buggera zaliczony!</h1>
                 <p>Musisz być dobrze zbugowany skoro udało Ci się na wszystkie pytania odpowiedzieć poprawnie.</p>
@@ -39,7 +39,17 @@ export default {
 </script>
 
 <style scoped>
-    
+    .wrapper {
+        width: 100%;
+        min-height: 450px;
+        position: relative;
+    }
+    .result {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%)
+    }
     div {
         font-family: Nunito;
         text-align: center;
@@ -66,33 +76,16 @@ export default {
     }
 
     h1 {
-        margin-top: 130px;
         padding: 20px;
     }
     p {
         padding: 20px;
     }
-    @media (max-width: 620px) {
-        h1 {
-            margin-top: 100px;
-        }
     
-    }  
-    @media (max-width: 420px) {
-        h1 {
-            margin-top: 110px;
-        }
-    }  
-    @media (max-width: 390px) {
-        h1 {
-            padding: 10px;
-            margin-top: 100px;
-            font-size: 28px;
-        }
-        p{
-            padding: 10px;
-        }
-    }
+    @media (max-width: 1024px) {
+        .wrapper {
+            min-height: 400px;
+    }}
 
 </style>
 

@@ -4,17 +4,16 @@
             <div class="question">
                 <h1 v-if="questionCounter < questions.length">{{ questions[questionCounter].text }}</h1>
             </div>
-            <div v-if="questionCounter < (questions.length)" class="options">
+            <div v-if="questionCounter < questions.length" class="options">
                 <div class="option" v-for="(answer, i) in questions[questionCounter].answers" :key="i" v-on:click="selectItem(i)" :class="{active: i === activeItem}">
                     <div class="circle"></div>
                     <h2 class="answer">{{ answer }}</h2>
                 </div>
             </div>
-            <div v-else class="options"></div>
             <div class="info">
                 <progressBar :nextQuestion="nextQuestion" :divider="questions.length" :questionCounter="questionCounter"></progressBar>
                 <div class="progresstext">
-                    <p v-if="questionCounter < (questions.length)"> Pytanie {{ questionCounter + 1 }} z {{ questions.length }}</p>
+                    <p v-if="questionCounter < questions.length"> Pytanie {{ questionCounter + 1 }} z {{ questions.length }}</p>
                 </div>
                 <div class="button-wrapper">
                     <transition name="bounce">
@@ -28,7 +27,6 @@
         <result v-else :results="results" class="quizContainer"></result>
         
     </div>
-    <div v-else>Loading...</div>
 </template>
 
 
@@ -70,9 +68,9 @@ export default {
     methods: {
         nextQuestion() {
             if(this.questionCounter === this.questions.length) {
-
                 return this.questionCounter++
             }
+
             let result = this.questions[this.questionCounter].answers[this.activeItem]
             this.results.push({
                 id: this.questions[this.questionCounter].id,
@@ -82,10 +80,7 @@ export default {
             this.questionCounter++
             this.activeItem = null;
             this.showButton = false;
-
-            
-
-        },
+    },
 
         selectItem(i) {
             this.activeItem = i;
@@ -106,26 +101,26 @@ export default {
 }
 
 .quizContainer {
+    position: relative;
     font-family: "Roboto";
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    margin-top: 50px;
     background-color: rgb(255, 0, 0, 0.67);
     width: 800px;
-    height: 450px;
     color: white;
     border-radius: 20px;
+    min-height: 450px;
 }
 
 div.question {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20%;
+    height: 25%;
     width: 85%;
     margin: 0 auto;
-    padding-top: 20px;
+    padding: 30px 0px 20px;
 }
 
 div.question h1 {
@@ -139,18 +134,18 @@ div.options {
     justify-content: space-around;
     align-content: center;
     width: 100%;
-    height: 60%;
+    min-height: 60%;
 }
 
 div.option {
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    margin: 3px auto;
     padding: 10px 0px;
     border: 1px white solid;
     height: 55px;
-    width: 70%;
+    width: 75%;
     transition: 0.2s;
 }
 
@@ -182,9 +177,8 @@ div.info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 10px;
+    width: 75%;
+    margin: 10px auto;
 }
 
 .progresstext {
@@ -252,6 +246,7 @@ div.option.active {
 @media (max-width: 1024px) {
     .quizContainer {
         width: 700px;
+        min-height: 400px;
     }
     div.question h1 {
         line-height: 26px;
@@ -273,11 +268,11 @@ div.option.active {
     }
     div.question h1 {
         line-height: 26px;
-        font-size: 20px;
+        font-size: 22px;
     }
     div.option {
         width: 85%;
-        height: 50px;
+        height: 45px;
     }
     div.info {
         width: 85%;
@@ -289,15 +284,16 @@ div.option.active {
 @media (max-width: 620px) {
     .quizContainer {
         width: 400px;
-        margin-top: 100px;
     }
     div.question {
-        width: 90%;
-        padding-top:10px;
+        width: 85%;
     }
     div.question h1 {
         line-height: 24px;
-        font-size: 18px;
+        font-size: 20px;
+    }
+    div.option {
+        margin: 6px auto;
     }
     div.info {
         width: 85%;
@@ -314,20 +310,14 @@ div.option.active {
     .button-wrapper { 
         height: 50px;
     }
-    
-    .result p {
-        padding: 20px;
-    }
-    
 }  
 @media (max-width: 420px) {
     .quizContainer {
         width: 360px;
-        margin-top: 80px;
     }
     div.question h1 {
         line-height: 20px;
-        font-size: 16px;
+        font-size: 18px;
     }
     h2.answer {
         font-size: 14px;
@@ -340,11 +330,10 @@ div.option.active {
 @media (max-width: 390px) {
     .quizContainer {
         width: 320px;
-        margin-top: 50px;
     }
     div.question h1 {
-        line-height: 18px;
-        font-size: 14px;
+        line-height: 20px;
+        font-size: 16px;
     }
     h2.answer {
         font-size: 14px;
@@ -353,11 +342,10 @@ div.option.active {
 @media (max-width: 350px) {
     .quizContainer {
         width: 290px;
-        margin-top: 30px;
     }
     div.question h1 {
-        line-height: 18px;
-        font-size: 13px;
+        line-height: 20px;
+        font-size: 15px;
     }
     h2.answer {
         font-size: 13px;
