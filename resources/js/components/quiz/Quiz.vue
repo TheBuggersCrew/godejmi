@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="info">
-                <progressBar :nextQuestion="nextQuestion" :divider="questions.length" :questionCounter="questionCounter"></progressBar>
+                <progressBar :nextQuestion="nextQuestion" :divider="questions.length"></progressBar>
                 <div class="progresstext">
                     <p v-if="questionCounter < questions.length"> Pytanie {{ questionCounter + 1 }} z {{ questions.length }}</p>
                 </div>
@@ -23,9 +23,7 @@
                 
             </div>
         </div>
-
         <result v-else :results="results" class="quizContainer"></result>
-        
     </div>
 </template>
 
@@ -37,56 +35,61 @@ import result from './Result'
 export default {
     data(){
         return {
-            questions: [],
             results: [],
-            questionCounter: 0,
             showButton: false,
             activeItem: null,
             loading: false,
         }
     },
 
-    props: ["leaveAnimation", "enterAnimation"],
-
     components: {
         progressBar,
         result
     },
 
-    beforeCreate() {
-        this.loading = true;
-        axios.get('/api/questions').then(response => {
-            this.questions = response.data;
-        });
-        this.loading = false;
-    },
-
-    mounted() {
-        this.$emit("changeAnimationHomePage")
+    computed: {
+        questionCounter() {
+            return this.$store.state.questionCounter
+        },
+        questions(){
+            return this.$store.state.questions
+        }
     },
 
     methods: {
+        selectItem(i) {
+            this.activeItem = i;
+            this.showButton = true;
+        },
+    
         nextQuestion() {
             if(this.questionCounter === this.questions.length) {
-                return this.questionCounter++
+                return this.$store.commit("incrementQuestionCounter")
             }
-
+        
             let result = this.questions[this.questionCounter].answers[this.activeItem]
             this.results.push({
                 id: this.questions[this.questionCounter].id,
                 answer: result,
             });
-
-            this.questionCounter++
+        
+            this.$store.commit("incrementQuestionCounter")
+    
             this.activeItem = null;
             this.showButton = false;
+        },
     },
 
-        selectItem(i) {
-            this.activeItem = i;
-            this.showButton = true;
-        }
-    }
+    beforeCreate() {
+        this.loading = true;
+        this.$store.dispatch("downloadQuestions");
+        this.loading = false;
+    },
+
+    mounted() {
+        this.$store.commit("changeEnterAnimation", "animate__animated animate__zoomInDown")
+    },
+
 }
 </script>
 

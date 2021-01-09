@@ -4,7 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 import VueRouter from "vue-router";
-import router from "./routes";
+import router from "./router/routes";
+import store from "./storage/store"
+
 import App from "./components/App";
 import Quiz from "./components/quiz/Quiz";
 import EnterWindow from "./components/quiz/EnterWindow"
@@ -40,6 +42,7 @@ Vue.component('Quiz', require('./components/quiz/Quiz.vue').default);
 const app = new Vue({
     el: '#app',
     router,
+    store,
     components: {
         App,
         EnterWindow,

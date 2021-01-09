@@ -14,10 +14,13 @@ export default {
     computed: {
         oneProgressUnit() {
             return(100 / this.divider)
-        }
+        },
+        questionCounter() {
+            return this.$store.state.questionCounter
+        },
         
     },
-    props: ["questionCounter", "divider", "nextQuestion"],
+    props: ["divider", "nextQuestion"],
     watch: {
         questionCounter() {
             let newBarPosition = Math.floor(this.barPosition + this.oneProgressUnit)

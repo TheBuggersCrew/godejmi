@@ -3,8 +3,7 @@
         <div class="wrapper">
             <h1>Achtung! <br>Jesteś nieautoryzowanym buggerem!</h1>
             <h2>Musisz zdać egzamin zanim przejdziesz do strony. Podawaj swoje odpowiedzi poprawnie ponieważ tylko 100% skuteczności pozwoli Ci zalogować się na&nbsp;stronę.</h2>
-            <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }" 
-            @changeAnimationHomePage="changeAnimationHomePage">Quiz</router-link></h1>
+            <h1><router-link class="quiz-btn" :to="{ name: 'quiz' }">Quiz</router-link></h1>
         </div>
     </div>
 </template>
@@ -13,11 +12,6 @@
 
 export default {
     name: "EnterWindow",
-    methods: {
-        changeAnimationHomePage() {
-            this.$emit("changeAnimationHomePage")
-        }
-    }
 }
 
 

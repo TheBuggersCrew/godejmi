@@ -6,7 +6,7 @@
         </nav>
         <div class="wrapper">
             <transition :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation" mode="out-in">
-                <router-view @changeAnimationHomePage="changeAnimationHomePage"></router-view>
+                <router-view></router-view>
             </transition>
         </div>
     </div>
@@ -16,15 +16,13 @@
 export default {
     name: "App",
     props: ["isAuthorized"],
-    data(){
-        return {
-            enterAnimation: "animate__animated animate__backInRight",
-            leaveAnimation: "animate__animated animate__backOutDown",
-        }
-    },
-    methods: {
-         changeAnimationHomePage() {
-             this.enterAnimation = "animate__animated animate__zoomInDown"
+    computed: {
+        enterAnimation() {
+            return this.$store.state.enterAnimation
+        },
+
+        leaveAnimation() {
+            return this.$store.state.leaveAnimation
         }
     }
 }
