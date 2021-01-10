@@ -6,12 +6,32 @@
         <div class="app">
             <h1 class="headline">a dziś <span>godej mi</span></h1>
             <div class="displayer-wrapper">
-                <h1 class="displayer"></h1>
+                <h1 class="displayer">{{ nickname }}</h1>
             </div>
-            <button class="draw"></button>
+            <button v-on:click="getNickname" class="draw"></button>
         </div>
     </div>
+
 </template>
+npm 
+<script>
+
+export default {
+    data(){
+        return {
+            nickname: "",
+        }
+    },
+
+    methods: {
+        getNickname() {
+            axios.get('/api/draw').then(response => {
+                this.nickname = response.data.nickname;
+            });
+    }}
+}
+
+</script>
 
 <style scoped>
 
