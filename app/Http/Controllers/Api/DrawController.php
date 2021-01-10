@@ -11,8 +11,6 @@ class DrawController extends Controller
     public function index()
     {
         $nickname = Draw::getOneNickname();
-        return json_encode([
-            'nickname' => $nickname
-        ]);
+        return response()->json(['nickname' => $nickname]);
     }
 }
