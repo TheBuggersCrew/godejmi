@@ -29,6 +29,8 @@
 
 
 <script>
+import { mapState } from 'vuex'
+
 import progressBar from './ProgressBar'
 import result from './Result'
 
@@ -48,12 +50,8 @@ export default {
     },
 
     computed: {
-        questionCounter() {
-            return this.$store.state.questionCounter
-        },
-        questions(){
-            return this.$store.state.questions
-        }
+        ...mapState(["questionCounter"]),
+        ...mapState(["questions"]),
     },
 
     methods: {
@@ -110,17 +108,17 @@ export default {
     flex-direction: column;
     margin: 0 auto;
     background-color: rgb(255, 0, 0, 0.67);
-    width: 800px;
+    width: 750px;
     color: white;
     border-radius: 20px;
-    min-height: 450px;
+    min-height: 430px;
 }
 
 div.question {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25%;
+    height: 30%;
     width: 85%;
     margin: 0 auto;
     padding: 30px 0px 20px;

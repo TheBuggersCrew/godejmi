@@ -3,6 +3,7 @@
         <nav>
             <router-link class="navbar-brand mr-auto" :to="{name: 'enterwindow'}"></router-link>
             <router-link class="navbar-brand mr-auto" :to="{name: 'homepage'}">Homepage</router-link>
+            <router-link class="navbar-brand mr-auto" :to="{name: 'name-randomiser'}">stare godejmi</router-link>
         </nav>
         <div class="wrapper">
             <transition :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation" mode="out-in">
@@ -13,17 +14,17 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
     name: "App",
+    
     props: ["isAuthorized"],
-    computed: {
-        enterAnimation() {
-            return this.$store.state.enterAnimation
-        },
 
-        leaveAnimation() {
-            return this.$store.state.leaveAnimation
-        }
+    computed: {
+        ...mapState(["enterAnimation"]),
+        ...mapState(["leaveAnimation"])
     }
 }
 </script>

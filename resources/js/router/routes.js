@@ -1,7 +1,7 @@
-import VueRouter from "vue-router";
-import EnterWindow from "../components/quiz/EnterWindow";
-import Quiz from "../components/quiz/Quiz";
-import HomePage from '../components/homepage/HomePage'
+import EnterWindow from "../components/Quiz/EnterWindow";
+import Quiz from "../components/Quiz/Quiz";
+import HomePage from '../components/Homepage/HomePage'
+import NameRandomiser from "../components/NameRandomiser/NameRandomiser"
 
 const routes = [
     {
@@ -19,11 +19,11 @@ const routes = [
         component: HomePage,
         name: 'homepage',
     },
-];
+    {
+        path: "name-randomiser",
+        component: NameRandomiser,
+        name: "name-randomiser"
+    }
+]
 
-const router = new VueRouter({
-    routes,
-    mode: "history"
-});
-
-export default router;
+export default routes
