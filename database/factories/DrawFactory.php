@@ -21,8 +21,8 @@ class DrawFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'nickname' => $this->faker->name
-        ];
+//        return [
+//            'nickname' => $this->faker->name
+//        ];
     }
 }
