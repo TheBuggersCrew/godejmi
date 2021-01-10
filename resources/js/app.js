@@ -8,8 +8,8 @@ import router from "./router/router";
 import store from "./storage/store"
 
 import App from "./components/App";
-import Quiz from "./components/quiz/Quiz";
-import EnterWindow from "./components/quiz/EnterWindow"
+import Quiz from "./components/Quiz/Quiz";
+import EnterWindow from "./components/Quiz/EnterWindow"
 
 require('./bootstrap');
 require("animate.css");
@@ -29,7 +29,7 @@ Vue.use(VueRouter);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('App', require('./components/App.vue').default);
-Vue.component('Quiz', require('./components/quiz/Quiz.vue').default);
+Vue.component('Quiz', require('./components/Quiz/Quiz.vue').default);
 
 
 

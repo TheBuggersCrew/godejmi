@@ -10,7 +10,24 @@ class DrawController extends Controller
 {
     public function index()
     {
-        $nickname = Draw::getOneNickname();
-        return response()->json(['nickname' => $nickname]);
+        $drawsCount = session()->get('draws_count', 0);
+
+        if($drawsCount < 5) {
+            $success = true;
+            $nickname = Draw::getOneNickname();
+            $msg = 'ok wariacie';
+            session()->put('draws_count', $drawsCount + 1);
+        } else {
+            $success = false;
+            $nickname = 'bożydar pazerny';
+            $msg = 'Limit wyczerpany';
+        }
+
+        return response()
+            ->json([
+            'success' => $success,
+            'msg' => $msg,
+            'nickname' => $nickname
+        ], $success ? 200 : 403);
     }
 }
