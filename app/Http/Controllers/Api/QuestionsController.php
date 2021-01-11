@@ -54,7 +54,7 @@ class QuestionsController extends Controller
 
         if($check) {
             $msg = 'Odpowiedzi poprawne, jestes autoryzowanym buggerem.';
-            session()->push('is_authorized', true);
+            session()->put('is_authorized', true);
         }
 
         return response()->json([
