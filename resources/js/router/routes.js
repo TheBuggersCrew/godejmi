@@ -1,6 +1,6 @@
 import EnterWindow from "../components/Quiz/EnterWindow";
 import Quiz from "../components/Quiz/Quiz";
-import HomePage from '../components/Homepage/HomePage'
+import HomePage from "../components/Homepage/HomePage"
 import NameRandomiser from "../components/NameRandomiser/NameRandomiser"
 
 const routes = [
@@ -15,9 +15,9 @@ const routes = [
         name: "quiz"
     },
     {
-        path: '/homepage',
+        path: "/homepage",
         component: HomePage,
-        name: 'homepage',
+        name: "homepage",
     },
     {
         path: "name-randomiser",

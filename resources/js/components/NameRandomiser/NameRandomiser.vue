@@ -11,9 +11,8 @@
             <button v-on:click="getNickname" class="draw"></button>
         </div>
     </div>
-
 </template>
-npm 
+
 <script>
 
 export default {
@@ -39,7 +38,6 @@ export default {
         position: relative;
         animation: pulse 1.5s infinite;
         border: 1px solid rgba(240,61,61,1);
-        /* box-shadow: 0px 0px 50px 0px rgba(240,61,61,1); */
         width: 700px;
         height: 100px;
         margin: 50px auto;
@@ -106,7 +104,6 @@ export default {
         position: absolute;
         left: 0;
         bottom: 0;
-        /*background-color: #f03d3d;*/
         color: #f03d3d;
         width: 100%;
         height: 40px;
