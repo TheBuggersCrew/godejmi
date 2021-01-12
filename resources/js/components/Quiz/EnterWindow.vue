@@ -12,6 +12,10 @@
 
 export default {
     name: "EnterWindow",
+    
+    created() {
+        this.$store.dispatch("downloadQuestions");
+    },
 }
 
 

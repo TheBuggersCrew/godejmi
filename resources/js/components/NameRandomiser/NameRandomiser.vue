@@ -8,26 +8,41 @@
             <div class="displayer-wrapper">
                 <h1 class="displayer">{{ nickname }}</h1>
             </div>
-            <button v-on:click="getNickname" class="draw"></button>
+            <button v-if="rerollLimit" v-on:click="getNickname" class="draw"></button>
+            <button v-else class="enough"></button>
         </div>
     </div>
 </template>
 
 <script>
 
+import baffle from 'baffle';
+
 export default {
     data(){
         return {
             nickname: "",
+            rerollLimit: true,
         }
     },
 
     methods: {
         getNickname() {
-            axios.get('/api/draw').then(response => {
-                this.nickname = response.data.nickname;
-            });
-    }}
+            axios.get('/api/draw')
+                .then(response => {
+                    this.nickname = response.data.nickname;
+
+                    let b = baffle('.displayer');
+                    b.start().set({ speed: 60 })
+                    .text(text => this.nickname)
+                    .reveal(10000);
+                })
+                .catch(res => {
+                    this.rerollLimit = false;
+                });
+                
+    }},
+    
 }
 
 </script>
@@ -45,24 +60,31 @@ export default {
         border-radius: 15px;
     }
 
-    button.draw {
+    button {
         margin: 30px;
         width: 200px;
         height: 70px;
         background-color: transparent;
         border: none;
-        background-image: url("/img/but1.png");
-        background-size: cover;
         display: block;
         margin: 0 auto;
         opacity: 0.8;
         transition: 0.2s;
         outline: none;
+        background-size: cover;
     }
 
     button.draw:hover {
         transform: scale(1.1);
         opacity: 1.2;
+    }
+
+    .draw {
+        background-image: url("/img/but1.png");
+    }
+
+    .enough {
+        background-image: url("/img/but3.png");
     }
 
     div.logo {

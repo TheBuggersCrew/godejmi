@@ -17,10 +17,8 @@ export default new Vuex.Store({
             state.questionCounter++
         },
 
-        downloadQuestions(state) {
-            axios.get('/api/questions').then(response => {
-                state.questions = response.data;
-            });
+        downloadQuestions(state, payload) {
+            state.questions = payload;
         },
 
         changeEnterAnimation(state, animation) {
@@ -34,8 +32,10 @@ export default new Vuex.Store({
 
     actions: {
         downloadQuestions(context) {
-            context.commit("downloadQuestions")
-            },
+            axios.get('/api/questions').then(response => {
+                let payload = response.data;
+                context.commit("downloadQuestions", payload)
+            })
         }
     },
-)
+})

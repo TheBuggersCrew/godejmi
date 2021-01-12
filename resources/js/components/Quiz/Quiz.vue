@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!loading" class="page">
+    <div class="page">
         <div class="quizContainer" v-if="questionCounter <= questions.length">
             <div class="question">
                 <h1 v-if="questionCounter < questions.length">{{ questions[questionCounter].text }}</h1>
@@ -40,7 +40,6 @@ export default {
             results: [],
             showButton: false,
             activeItem: null,
-            loading: false,
         }
     },
 
@@ -76,12 +75,6 @@ export default {
             this.activeItem = null;
             this.showButton = false;
         },
-    },
-
-    beforeCreate() {
-        this.loading = true;
-        this.$store.dispatch("downloadQuestions");
-        this.loading = false;
     },
 
     mounted() {

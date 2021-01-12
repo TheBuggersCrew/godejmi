@@ -20,7 +20,7 @@ const routes = [
         name: "homepage",
     },
     {
-        path: "name-randomiser",
+        path: "/name-randomiser",
         component: NameRandomiser,
         name: "name-randomiser"
     }
