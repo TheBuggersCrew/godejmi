@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="info">
-                <progressBar :nextQuestion="nextQuestion" :divider="questions.length"></progressBar>
+                <progressBar :nextQuestion="nextQuestion" :divider="questions.length" />
                 <div class="progresstext">
                     <p v-if="questionCounter < questions.length"> Pytanie {{ questionCounter + 1 }} z {{ questions.length }}</p>
                 </div>
@@ -20,10 +20,9 @@
                         <button v-if="showButton" v-on:click="nextQuestion">Dalej</button>
                     </transition>
                 </div>
-                
             </div>
         </div>
-        <result v-else :results="results" class="quizContainer"></result>
+        <result v-else :results="results" class="quizContainer" />
     </div>
 </template>
 

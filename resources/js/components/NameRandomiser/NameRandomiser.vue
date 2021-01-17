@@ -28,9 +28,10 @@ export default {
 
     methods: {
         getNickname() {
+            
             axios.get('/api/draw')
-                .then(response => {
-                    this.nickname = response.data.nickname;
+                .then(res => {
+                    this.nickname = res.data.nickname;
 
                     let b = baffle('.displayer');
                     b.start().set({ speed: 60 })
