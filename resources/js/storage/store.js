@@ -6,10 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
     state: {
-        questionCounter: 0,
-        questions: [],
         enterAnimation: "animate__animated animate__backInRight",
         leaveAnimation: "animate__animated animate__backOutDown",
+
+        questionCounter: 0,
+        questions: [],
     },
 
     mutations: {

@@ -37,12 +37,13 @@ export default {
         text-align: center;
     }
     .container {
-        margin-top: 200px;
+        position: relative;
+        min-width: 100%;
+        min-height: 100%;
         font-family: "Nunito";
         display: flex;
         flex-direction: column;
         margin: 0 auto;
-        margin-top: 50px;
         color: white;
         border-radius: 20px;
     }
@@ -67,12 +68,16 @@ export default {
         text-decoration: none;
     }
     .wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         width: 600px;
         padding: 10px 20px;
         color: rgb(255, 0, 0, 0.67);
         background-color: rgba(255, 255, 255, 0.65);
-        margin:75px auto;
+        margin: 0px auto;
         transition: 0.2s;
     }
 

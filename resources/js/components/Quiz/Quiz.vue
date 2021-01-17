@@ -93,6 +93,9 @@ export default {
     font-weight: 500;
 }
 
+.page { 
+}
+
 .quizContainer {
     position: relative;
     font-family: "Roboto";

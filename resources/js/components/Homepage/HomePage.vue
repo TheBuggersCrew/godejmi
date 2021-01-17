@@ -16,9 +16,24 @@
                 </div>
                 <p>Bejsikli normal godej mi. Znane lubiane zbugowane. Kliknij już teraz żeby zostać obrażonym. Super przezwiska. Fajne ksywy. Nowa pulla przewissk co tydzień</p>
             </div>
+            <div class="shoutbox-wrapper">
+                <Shoutbox />
+            </div>  
         </section>
     </div>
 </template>
+
+<script>
+
+import Shoutbox from "../Shoutbox/Shoutbox"
+
+export default {
+    components: {
+        Shoutbox
+    }
+}
+
+</script>
 
 <style scoped>
     nav {
@@ -57,26 +72,34 @@
         max-width: 100%;
         max-height: 100%;
     }
+
     section {
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         background-color: rgba(0,0,0,0.11);
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-around;
         max-width: 1400px;
         margin: 0 auto;
         padding: 25px;
     }
-    div.element {
-        background:rgba(255,255,255,0.7);
+
+    div.shoutbox-wrapper {
+        width: 65%;
+        height: 600px; 
+        background-color: #ffffff;
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         padding: 20px;
-        width: 400px;
-        height: 600px;
         border: 1px solid white;
     }
-    div.element:hover {
-        background-color: rgba(255, 255, 255, 1);
+
+    div.element {
+        background:rgba(255,255,255,1);
+        box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+        padding: 20px;
+        width: 30%;
+        height: 600px;
+        border: 1px solid white;
     }
     p {
         margin-top: 30px;
