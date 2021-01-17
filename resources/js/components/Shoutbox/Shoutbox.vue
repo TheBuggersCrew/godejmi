@@ -6,8 +6,8 @@
                 <h3>{{ data.message }}</h3>
             </div>
         </section>
-        <input v-model="inputMessage.message" class="input-message">
-        <button>></button>
+        <input v-model="message" class="input-message">
+        <button @click="send"></button>
     </div>
 </template>
 
@@ -15,22 +15,21 @@
 export default {
     data(){
         return {
-            inputMessage: {
-                nickname: "",
-                message: ""
-            },
-            shoutBoxContent: [{
-                nickname: "Jimi Manuwa",
-                message: "Kocham pustynie"
-            },
-            {
-                nickname: "Biedroń",
-                message: "SEKS Z CHOPEM JEST SUPER,"
-            },
-            {
-                nickname: "plecy",
-                message: "super kurwa,"
-            },]
+            message: "",
+            shoutBoxContent: []
+        }
+    },
+
+    created() {
+        axios.get("/api/messages")
+            .then(res => {
+                this.shoutBoxContent = res.data
+            })
+    },
+
+    methods: {
+        send() {
+            axios.post("/api/messages/send", this.message)
         }
     }
 }
