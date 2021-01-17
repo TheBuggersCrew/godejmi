@@ -37,16 +37,16 @@ class QuestionsController extends Controller
     public function checkAnswers(Request $request)
     {
         $data = json_decode($request->getContent());
-        $check = 1;
+        $check = true;
 
         if(count($data) !== 5) {
-            $check = 0;
+            $check = false;
             $msg = 'Powinno byc 5 odpowiedzi ;]';
         } else {
             foreach($data as $answer) {
                 $question = Question::findOrFail((int)$answer->id);
                 if(!$question->checkAnswer((string)$answer->answer)) {
-                    $check = 0;
+                    $check = false;
                     $msg = 'Error. Zła odpowiedź na któreś z pytań.';
                 }
             }
@@ -58,7 +58,7 @@ class QuestionsController extends Controller
         }
 
         return response()->json([
-            'success' => (bool)$check,
+            'success' => $check,
             'msg' => $msg
         ]);
     }
