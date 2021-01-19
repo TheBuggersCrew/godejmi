@@ -16,6 +16,7 @@
 <script>
 
 import { mapState } from 'vuex'
+import scrollLock from 'scroll-lock'
 
 export default {
     name: "App",
@@ -25,7 +26,11 @@ export default {
     computed: {
         ...mapState(["enterAnimation"]),
         ...mapState(["leaveAnimation"])
-    }
+    },
+
+    created() {
+        scrollLock.disablePageScroll()
+    },
 }
 </script>
 
@@ -41,7 +46,12 @@ export default {
     
     .wrapper {
         position: relative;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
+    }
+    nav {
+        position: fixed;
+        top: 0%;
+        left: 90%;
     }
 </style>

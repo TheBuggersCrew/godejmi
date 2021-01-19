@@ -1,15 +1,28 @@
 <template>
     <div class="page">
         <div class="quizContainer" v-if="questionCounter <= questions.length">
-            <div class="question">
-                <h1 v-if="questionCounter < questions.length">{{ questions[questionCounter].text }}</h1>
+
+            <div v-if="questionCounter < questions.length" class="question">
+                <h1>{{ questions[questionCounter].text }}</h1>
             </div>
+            <div v-else class="question">
+                <h1>{{ questions[questionCounter - 1].text }}</h1>
+            </div>
+
             <div v-if="questionCounter < questions.length" class="options">
-                <div class="option" v-for="(answer, i) in questions[questionCounter].answers" :key="i" v-on:click="selectItem(i)" :class="{active: i === activeItem}">
+                <div class="option" v-for="(answer, i) in questions[questionCounter].answers" :key="answer" v-on:click="selectItem(i)" :class="{active: i === activeItem}">
                     <div class="circle"></div>
                     <h2 class="answer">{{ answer }}</h2>
                 </div>
             </div>
+
+            <div v-else class="options">
+                <div class="option" v-for="(answer, i) in questions[questionCounter - 1].answers" :key="answer" :class="{active: i === activeItem}">
+                    <div class="circle"></div>
+                    <h2 class="answer">{{ answer }}</h2>
+                </div>
+            </div>
+
             <div class="info">
                 <progressBar :nextQuestion="nextQuestion" :divider="questions.length" />
                 <div class="progresstext">
@@ -21,6 +34,7 @@
                     </transition>
                 </div>
             </div>
+
         </div>
         <result v-else :results="results" class="quizContainer" />
     </div>
@@ -94,6 +108,8 @@ export default {
 }
 
 .page { 
+    padding-top: 220px;
+
 }
 
 .quizContainer {
@@ -107,13 +123,14 @@ export default {
     color: white;
     border-radius: 20px;
     min-height: 430px;
+    max-height: 430px;
 }
 
 div.question {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30%;
+    min-height: 30%;
     width: 85%;
     margin: 0 auto;
     padding: 30px 0px 20px;
@@ -243,6 +260,7 @@ div.option.active {
     .quizContainer {
         width: 700px;
         min-height: 400px;
+        max-height: 500px;
     }
     div.question h1 {
         line-height: 26px;
@@ -279,7 +297,7 @@ div.option.active {
 }
 @media (max-width: 620px) {
     .quizContainer {
-        width: 400px;
+        width: 430px;
     }
     div.question {
         width: 85%;

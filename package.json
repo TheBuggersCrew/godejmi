@@ -26,6 +26,7 @@
     "dependencies": {
         "animate.css": "^4.1.1",
         "baffle": "^0.3.6",
+        "scroll-lock": "^2.1.4",
         "vue-router": "^3.4.9",
         "vuex": "^3.6.0"
     }

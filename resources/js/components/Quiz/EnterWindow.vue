@@ -85,11 +85,6 @@ export default {
         background-color: rgba(255, 255, 255, 1);
     }
 
-    @media (orientation: portrait) {
-        div.container {
-            margin-top: 80px;
-        }
-    }
 
     @media (max-width: 768px) {
         .wrapper {
@@ -103,9 +98,6 @@ export default {
         font-size: 18px;
     }}
     @media (orientation:portrait) and (max-width:520px) {
-        div.container {
-            margin-top: 50px;
-        }
         .wrapper {
             width: 390px;
         }
@@ -116,9 +108,6 @@ export default {
         font-size: 17px;
     }}
     @media (orientation:portrait) and (max-width:420px) {
-         div.container {
-            margin-top: 40px;
-        }
         .wrapper {
             width: 350px;
         }
@@ -129,9 +118,6 @@ export default {
         font-size: 16px;
     }}
     @media (orientation:portrait) and (max-width:380px) {
-        div.container {
-            margin-top: 20px;
-        }
         .wrapper {
             width: 300px;
         }

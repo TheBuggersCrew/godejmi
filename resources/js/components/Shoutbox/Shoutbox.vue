@@ -7,7 +7,7 @@
             </div>
         </section>
         <input v-model="message" class="input-message">
-        <button @click="send"></button>
+        <button @click="send">></button>
     </div>
 </template>
 
