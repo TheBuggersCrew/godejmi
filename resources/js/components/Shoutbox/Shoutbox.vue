@@ -22,21 +22,22 @@ export default {
     },
 
     created() {
-        setInterval(
-            axios.get("/api/shoutbox/messages")
-            .then(res => {
-                this.shoutBoxContent = res.data
-            }), 
-            
-        1000)
-        
+        setInterval(this.downloadMessages, 1000)
     },
 
     methods: {
-        send() {
+        sendMessage() {
             axios.post("/api/shoutbox/send", {
                 content: this.message
             })
+        },
+
+        downloadMessages() {
+            axios.get("/api/shoutbox/messages")
+            .then(res => {
+                this.shoutBoxContent = res.data
+            })
+        
         }
     }
 }
