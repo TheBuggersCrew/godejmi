@@ -23,7 +23,7 @@ class MessageFactory extends Factory
     {
         return [
             'nickname' => $this->faker->name,
-            'message' => $this->faker->text,
+            'content' => $this->faker->text,
         ];
     }
 }
