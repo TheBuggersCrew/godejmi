@@ -3,8 +3,7 @@
         <section class="displayer">
             <div v-for="data in shoutBoxContent" :key="data.nickname" class="message">
                 <h3>{{ data.created_at }} || {{ data.nickname }}:</h3>
-                <h3>{{ data.message }}</h3>
-
+                <h3>{{ data.content }}</h3>
             </div>
         </section>
         <input v-model="message" class="input-message">
