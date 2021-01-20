@@ -16,7 +16,7 @@ class ShoutboxController extends Controller
 
     public function sendMessage(Request $request)
     {
-        $content = htmlspecialchars(json_decode($request->getContent())->content ?? null, ENT_QUOTES);
+        $content = json_decode($request->getContent())->content ?? null;
         $success = true;
 
         if(strlen($content) === 0)
@@ -54,7 +54,7 @@ class ShoutboxController extends Controller
 
     public function setNickname(Request $request)
     {
-        $nickname = htmlspecialchars(json_decode($request->getContent())->nickname ?? null);
+        $nickname = json_decode($request->getContent())->nickname ?? null;
         $success = true;
 
         if(strlen($nickname) < 3)
