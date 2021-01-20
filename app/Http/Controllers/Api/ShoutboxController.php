@@ -54,7 +54,7 @@ class ShoutboxController extends Controller
 
     public function setNickname(Request $request)
     {
-        $nickname = htmlspecialchars($request->input('nickname'));
+        $nickname = htmlspecialchars(json_decode($request->getContent())->nickname ?? null);
         $check = true;
 
         if(strlen($nickname) < 3)
@@ -71,8 +71,8 @@ class ShoutboxController extends Controller
 
         if($check)
         {
-            session()->set('nickname', $nickname);
-            $msg = 'Nick został ustawiony!';
+            session()->put('nickname', $nickname);
+            $msg = 'Nick został ustawiony! (' . $nickname . ')';
         }
 
         return response()->json([
