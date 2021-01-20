@@ -16,12 +16,12 @@ export default {
     data(){
         return {
             message: "",
-            shoutBoxContent: []
+            shoutBoxContent: {}
         }
     },
 
     created() {
-        setInterval(this.downloadMessages, 5000)
+        setInterval(this.downloadMessages, 1500)
     },
 
     methods: {
