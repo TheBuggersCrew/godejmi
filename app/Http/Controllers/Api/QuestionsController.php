@@ -37,29 +37,29 @@ class QuestionsController extends Controller
     public function checkAnswers(Request $request)
     {
         $data = json_decode($request->getContent());
-        $check = true;
+        $success = true;
 
         if(count($data) !== 5) {
-            $check = false;
+            $success = false;
             $msg = 'Powinno byc 5 odpowiedzi ;]';
         } else {
             foreach($data as $answer) {
                 $question = Question::findOrFail((int)$answer->id);
                 if(!$question->checkAnswer((string)$answer->answer)) {
-                    $check = false;
+                    $success = false;
                     $msg = 'Error. Zła odpowiedź na któreś z pytań.';
                 }
             }
         }
 
-        if($check) {
+        if($success) {
             $msg = 'Odpowiedzi poprawne, jestes autoryzowanym buggerem.';
             session()->put('is_authorized', true);
         }
 
         return response()->json([
-            'success' => $check,
+            'success' => $success,
             'msg' => $msg
-        ]);
+        ], $success ? 200 : 403);
     }
 }

@@ -16,28 +16,28 @@ class ShoutboxController extends Controller
 
     public function sendMessage(Request $request)
     {
-        $content = htmlspecialchars(json_decode($request->getContent())->content ?? null, ENT_QUOTES);
-        $check = true;
+        $content = json_decode($request->getContent())->content ?? null;
+        $success = true;
 
         if(strlen($content) === 0)
         {
-            $check = false;
+            $success = false;
             $msg = 'Wiadomość musi mieć treść.';
         }
 
         if(!session()->get('is_authorized'))
         {
-            $check = false;
+            $success = false;
             $msg = 'Nie jesteś autoryzowany do wysyłania wiadomości';
         }
 
         if(empty(session()->get('nickname')))
         {
-            $check = false;
+            $success = false;
             $msg = 'Nie wiem nawet jak ty nazywasz';
         }
 
-        if($check)
+        if($success)
         {
             $message = new Message();
             $message->nickname = session()->get('nickname') ?? 'Bezimienny';
@@ -47,37 +47,37 @@ class ShoutboxController extends Controller
         }
 
         return response()->json([
-            'success' => $check,
+            'success' => $success,
             'msg' => $msg
-        ]);
+        ], $code = 200);
     }
 
     public function setNickname(Request $request)
     {
-        $nickname = htmlspecialchars(json_decode($request->getContent())->nickname ?? null);
-        $check = true;
+        $nickname = json_decode($request->getContent())->nickname ?? null;
+        $success = true;
 
         if(strlen($nickname) < 3)
         {
-            $check = false;
+            $success = false;
             $msg = 'Nick musi mieć co najmniej 3 znaki.';
         }
 
         if(!session()->get('is_authorized'))
         {
-            $check = false;
+            $success = false;
             $msg = 'Nie jesteś autoryzowany do ustawiania nicku';
         }
 
-        if($check)
+        if($success)
         {
             session()->put('nickname', $nickname);
             $msg = 'Nick został ustawiony! (' . $nickname . ')';
         }
 
         return response()->json([
-            'success' => $check,
+            'success' => $success,
             'msg' => $msg
-        ]);
+        ], $success ? 200 : 403);
     }
 }

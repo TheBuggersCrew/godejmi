@@ -23,8 +23,7 @@ class DrawController extends Controller
             $msg = 'Limit wyczerpany';
         }
 
-        return response()
-            ->json([
+        return response()->json([
             'success' => $success,
             'msg' => $msg,
             'nickname' => $nickname
