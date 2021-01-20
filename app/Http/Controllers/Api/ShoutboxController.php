@@ -16,7 +16,7 @@ class ShoutboxController extends Controller
 
     public function sendMessage(Request $request)
     {
-        $content = htmlspecialchars($request->input('content'), ENT_QUOTES);
+        $content = htmlspecialchars(json_decode($request->getContent())->content ?? null, ENT_QUOTES);
         $check = true;
 
         if(strlen($content) === 0)
@@ -40,7 +40,7 @@ class ShoutboxController extends Controller
         if($check)
         {
             $message = new Message();
-            $message->nickname = session()->get('nickname') ?: 'Bezimienny';
+            $message->nickname = session()->get('nickname') ?? 'Bezimienny';
             $message->content = $content;
             $message->save();
             $msg = 'Wiadomość została zapisana!';
