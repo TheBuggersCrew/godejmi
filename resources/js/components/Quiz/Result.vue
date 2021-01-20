@@ -3,8 +3,9 @@
         <div v-if="!loading" class="wrapper"> 
             <div v-if="validationConfirmed" class="result">
                 <h1>Gratulacje test buggera zaliczony!</h1>
-                <p>Musisz być dobrze zbugowany skoro udało Ci się na wszystkie pytania odpowiedzieć poprawnie.</p>
-                <button>
+                <p>Podaj swoje imię:</p>
+                <input v-model="nickname" type="text">
+                <button @click="sendNickname" v-if="nicknameProvided">
                     <router-link class="welcome" :to="{ name: 'homepage' }">ZAPRASZAMY</router-link>
                 </button>
             </div>
@@ -13,7 +14,6 @@
                <h1>Wypad!!!!!</h1>
             </div>
         </div>
-        <div v-else>Loading</div>
     </div>
 </template>
 
@@ -21,11 +21,33 @@
 export default {
     data(){
         return {
+            nickname: "",
+            nicknameProvided: false,
             validationConfirmed: null,
             loading: false,
         }
     },
+    
     props:["results"],
+
+    watch: {
+        nickname() {
+            if(this.nickname.length > 3){
+                this.nicknameProvided = true
+            }
+            else {
+                this.nicknameProvided = false
+            }
+        }
+    },
+
+    methods: {
+        sendNickname() {
+            axios.post('/api/shoutbox/setNickname', {
+                nickname: this.nickname
+            })
+        }
+    },
 
     created() {
         this.loading = true
@@ -54,13 +76,15 @@ export default {
         text-align: center;
     }
     button {
-    color: rgb(240, 61, 61, 1);
-    font-weight: 500;
-    padding: 7px 15px;
-    width: 170px;
-    background-color: white;
-    border: none;
-    transition: 0.3s
+        margin: 0 auto;
+        display: block;
+        color: rgb(240, 61, 61, 1);
+        font-weight: 500;
+        padding: 7px 15px;
+        width: 170px;
+        background-color: white;
+        border: none;
+        transition: 0.3s
     }
 
     button:hover {

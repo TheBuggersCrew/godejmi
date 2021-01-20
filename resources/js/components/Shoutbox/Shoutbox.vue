@@ -2,8 +2,9 @@
     <div class="wrapper">
         <section class="displayer">
             <div v-for="data in shoutBoxContent" :key="data.nickname" class="message">
-                <h3>{{ data.nickname }}:</h3>
+                <h3>{{ data.created_at }} {{ data.nickname }}:</h3>
                 <h3>{{ data.message }}</h3>
+
             </div>
         </section>
         <input v-model="message" class="input-message">
@@ -21,15 +22,21 @@ export default {
     },
 
     created() {
-        axios.get("/api/messages")
+        setInterval(
+            axios.get("/api/shoutbox/messages")
             .then(res => {
                 this.shoutBoxContent = res.data
-            })
+            }), 
+            
+        1000)
+        
     },
 
     methods: {
         send() {
-            axios.post("/api/messages/send", this.message)
+            axios.post("/api/shoutbox/send", {
+                content: this.message
+            })
         }
     }
 }
