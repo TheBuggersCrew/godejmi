@@ -85,7 +85,7 @@ export default {
     }
 
     div.shoutbox-wrapper {
-        width: 65%;
+        flex:3;
         height: 600px; 
         background-color: #ffffff;
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
@@ -94,13 +94,15 @@ export default {
     }
 
     div.element {
+        flex:1;
         background:rgba(255,255,255,1);
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         padding: 20px;
-        width: 30%;
         height: 600px;
         border: 1px solid white;
+        margin-right: 10px;
     }
+    
     p {
         margin-top: 30px;
     }

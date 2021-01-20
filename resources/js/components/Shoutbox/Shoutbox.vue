@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <section class="displayer">
-            <div v-for="data in shoutBoxContent" :key="data.nickname" class="message">
+            <div v-for="(data, i) in shoutBoxContent" :key="i" class="message">
                 <h3>{{ data.created_at }} || {{ data.nickname }}:</h3>
                 <h3>{{ data.content }}</h3>
             </div>
