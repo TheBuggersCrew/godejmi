@@ -25,6 +25,6 @@ Route::group([
     Route::post('questions/check', [QuestionsController::class, 'checkAnswers']);
     Route::get('shoutbox/messages', [ShoutboxController::class, 'getMessages']);
     Route::post('shoutbox/send', [ShoutboxController::class, 'sendMessage']);
-    Route::get('shoutbox/setNickname', [ShoutboxController::class, 'setNickname']);
+    Route::post('shoutbox/setNickname', [ShoutboxController::class, 'setNickname']);
 });
 
