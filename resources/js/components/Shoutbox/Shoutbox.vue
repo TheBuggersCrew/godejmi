@@ -2,13 +2,13 @@
     <div class="wrapper">
         <section class="displayer">
             <div v-for="data in shoutBoxContent" :key="data.nickname" class="message">
-                <h3>{{ data.created_at }} {{ data.nickname }}:</h3>
+                <h3>{{ data.created_at }} || {{ data.nickname }}:</h3>
                 <h3>{{ data.message }}</h3>
 
             </div>
         </section>
         <input v-model="message" class="input-message">
-        <button @click="send">></button>
+        <button @click="sendMessage">></button>
     </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
     },
 
     created() {
-        setInterval(this.downloadMessages, 1000)
+        setInterval(this.downloadMessages, 5000)
     },
 
     methods: {
@@ -30,6 +30,7 @@ export default {
             axios.post("/api/shoutbox/send", {
                 content: this.message
             })
+        this.message = ""
         },
 
         downloadMessages() {
