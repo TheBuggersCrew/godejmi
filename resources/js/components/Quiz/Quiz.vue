@@ -128,6 +128,7 @@ export default {
 
 div.question {
     display: flex;
+    flex: 2;
     justify-content: center;
     align-items: center;
     min-height: 30%;
@@ -143,6 +144,7 @@ div.question h1 {
 
 div.options {
     display: flex;
+    flex:6;
     flex-direction: column;
     justify-content: space-around;
     align-content: center;
@@ -188,6 +190,7 @@ h2.answer {
 
 div.info {
     display: flex;
+    flex:2;
     justify-content: space-between;
     align-items: center;
     width: 75%;
@@ -274,6 +277,10 @@ div.option.active {
     }
 } 
 @media (max-width: 776px) {
+    .page { 
+        padding-top: 200px;
+
+    }   
     .quizContainer {
         width: 600px;
     }
@@ -296,6 +303,10 @@ div.option.active {
     }
 }
 @media (max-width: 620px) {
+    .page { 
+        padding-top: 160px;
+
+    }  
     .quizContainer {
         width: 430px;
     }
@@ -325,7 +336,11 @@ div.option.active {
         height: 50px;
     }
 }  
-@media (max-width: 420px) {
+@media (max-width: 435px) {
+    .page { 
+        padding-top: 120px;
+
+    }  
     .quizContainer {
         width: 360px;
     }
@@ -342,11 +357,15 @@ div.option.active {
     }
 }  
 @media (max-width: 390px) {
+    .page { 
+        padding-top: 90px;
+
+    }  
     .quizContainer {
         width: 320px;
     }
     div.question h1 {
-        line-height: 20px;
+        line-height: 22px;
         font-size: 16px;
     }
     h2.answer {
@@ -354,6 +373,10 @@ div.option.active {
     } 
 }
 @media (max-width: 350px) {
+    .page { 
+        padding-top: 50px;
+
+    }  
     .quizContainer {
         width: 290px;
     }

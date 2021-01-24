@@ -5,8 +5,9 @@
                 <h1>Gratulacje test buggera zaliczony!</h1>
                 <p>Podaj swoje imię:</p>
                 <input v-model="nickname" type="text">
-                <button @click="sendNickname" v-if="nicknameProvided">
-                    <router-link class="welcome" :to="{ name: 'homepage' }">ZAPRASZAMY</router-link>
+                <button @click="sendNickname" :class="{disabled: !nicknameProvided}">
+                    <div class="button-disabled" v-if="!nicknameProvided">ZAPRASZAMY</div>
+                    <router-link v-else class="welcome" :to="{ name: 'homepage' }">ZAPRASZAMY</router-link>
                 </button>
             </div>
             
@@ -66,6 +67,7 @@ export default {
         position: relative;
     }
     .result {
+        width: 80%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -88,27 +90,80 @@ export default {
     }
 
     button:hover {
-    box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+        box-shadow: 0px 0px 10px 0px rgba(255,255,255,1);
+    }
 
-}
+    .disabled {
+        color: rgba(255,0,0,0,67);
+        opacity: 0.76
+    }
+    .disabled:hover {
+        box-shadow: 0px 0px 0px 0px rgba(255,255,255,0)
+    }
 
     .welcome {
-    font-weight: 500;
-    color: rgb(240, 61, 61, 1);
-    text-decoration: none;
+        font-weight: 500;
+        color: rgb(240, 61, 61, 1);
+        text-decoration: none;
     }
 
     h1 {
         padding: 20px;
     }
     p {
+        font-size: 22px;
         padding: 20px;
+    }
+
+    input {
+        width: 170px;
+        font-size: 22px;
+        margin: 20px 0px;
     }
     
     @media (max-width: 1024px) {
         .wrapper {
             min-height: 400px;
-    }}
+        }
+    } 
+    @media (max-width: 776px) {
+        h1 {
+            font-size: 28px;
+        }
+        p {
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 620px) {
+        h1 {
+            font-size: 26px;
+        }
+        
+    }  
+    @media (max-width: 435px) {
+        h1 {
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+        }
+    }  
+    @media (max-width: 390px) {
+        h1 {
+            font-size: 22px;
+        }
+
+    }
+    @media (max-width: 350px) {
+        h1 {
+            
+            font-size: 20px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+
 
 </style>
 

@@ -6,7 +6,7 @@
                 <h3>{{ data.content }}</h3>
             </div>
         </section>
-        <input v-model="message" class="input-message">
+        <textarea v-model="message" class="input-message"></textarea>
         <button @click="sendMessage">></button>
     </div>
 </template>
@@ -16,13 +16,15 @@ export default {
     data(){
         return {
             message: "",
-            shoutBoxContent: {}
+            shoutBoxContent: {},
+            firstload: true,
         }
     },
 
     created() {
         setInterval(this.downloadMessages, 1500)
     },
+
 
     methods: {
         sendMessage() {
@@ -35,9 +37,15 @@ export default {
         downloadMessages() {
             axios.get("/api/shoutbox/messages")
             .then(res => {
-                this.shoutBoxContent = res.data
+                this.shoutBoxContent = res.data})
+            .then(res => {
+                if(this.firstload) {
+                    const displayer = document.querySelector(".displayer")
+                    displayer.scrollTop = displayer.scrollHeight;
+
+                    this.firstload = !this.firstload
+                }
             })
-        
         }
     }
 }
@@ -56,6 +64,7 @@ export default {
         overflow-y: scroll;
     }
     .input-message {
+        resize: none;
         width: 100%;
         height: 20%;
     }

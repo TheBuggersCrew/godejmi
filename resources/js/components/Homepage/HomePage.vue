@@ -40,7 +40,7 @@ export default {
         display: flex;
         flex-direction: row;
         max-width: 1400px;
-        margin: 20px auto 50px;
+        margin: 0px auto 50px;
         justify-content: space-between;
         align-items: center;
     }
