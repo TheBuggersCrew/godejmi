@@ -44,9 +44,10 @@ export default {
 
     methods: {
         sendNickname() {
+            if(this.nicknameProvided) {
             axios.post('/api/shoutbox/setNickname', {
                 nickname: this.nickname
-            })
+            })}
         }
     },
 
@@ -94,8 +95,8 @@ export default {
     }
 
     .disabled {
-        color: rgba(255,0,0,0,67);
-        opacity: 0.76
+        color: white;
+        background-color: #666;
     }
     .disabled:hover {
         box-shadow: 0px 0px 0px 0px rgba(255,255,255,0)

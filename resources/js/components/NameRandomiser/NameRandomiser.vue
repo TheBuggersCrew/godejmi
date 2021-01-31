@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="logo">
             <img src="/img/godejmi-logo.png" alt="">
         </div>
@@ -11,6 +11,7 @@
             <button v-if="rerollLimit" v-on:click="getNickname" class="draw"></button>
             <button v-else class="enough"></button>
         </div>
+        <a class="button" @click="$router.go(-1)">back</a>
     </div>
 </template>
 
@@ -49,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+    .container {
+        position: relative;
+    }
 
     div.displayer-wrapper {
         position: relative;
@@ -137,6 +141,29 @@ export default {
 
     footer p {
         margin-top: 10px;
+    }
+
+    .button {
+        cursor: pointer;
+        text-align: center;
+        position:absolute;
+        right: 10%;
+        top: 5%;
+        width: 150px;
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+        border-radius: 50px;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 700;
+        transition: 0.2s;
+        text-decoration:none;
+    }
+
+    .button:hover { 
+        box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.67);
     }
 
     @keyframes pulse {

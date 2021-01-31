@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.2",
         "animate.css": "^4.1.1",
         "baffle": "^0.3.6",
         "scroll-lock": "^2.1.4",

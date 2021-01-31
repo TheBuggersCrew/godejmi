@@ -7,14 +7,15 @@
                     <img src="/img/godejmi-logo.png" alt="">
                 </div>
             </div>
-            <button>CLICK ;]</button>
         </nav>
         <section>
             <div class="element">
+                <header>godejmi.pl</header>
                 <div class="imgPreview">
                     <img src="/img/godejmiPreview.png" alt="">
                 </div>
-                <p>Bejsikli normal godej mi. Znane lubiane zbugowane. Kliknij już teraz żeby zostać obrażonym. Super przezwiska. Fajne ksywy. Nowa pulla przewissk co tydzień</p>
+                <p class="description">Bejsikli normal godej mi. Znane lubiane zbugowane. Kliknij już teraz żeby zostać obrażonym. Super przezwiska. Fajne ksywy. Nowa pulla przewissk co tydzień</p>
+                <button><router-link class="button" :to="{name: 'name-randomiser'}">Przejdź</router-link></button>
             </div>
             <div class="shoutbox-wrapper">
                 <Shoutbox />
@@ -36,6 +37,16 @@ export default {
 </script>
 
 <style scoped>
+    header {
+            font-size: 20px;
+            padding: 15px 25px;
+            text-align: right;
+            color: white;
+            font-weight: 800;
+            width: 100%;
+            height: 10%;
+            background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+        }
     nav {
         display: flex;
         flex-direction: row;
@@ -63,19 +74,12 @@ export default {
         width: 150px;
         height: 150px;
     }
-
-    div.imgPreview {
-        border: 1px solid #333
-    }
-
     div img {
         max-width: 100%;
         max-height: 100%;
     }
 
     section {
-        box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
-        background-color: rgba(0,0,0,0.11);
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -87,29 +91,34 @@ export default {
     div.shoutbox-wrapper {
         flex:3;
         height: 600px; 
-        background-color: #ffffff;
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
-        padding: 20px;
-        border: 1px solid white;
     }
-
+    
     div.element {
         flex:1;
         background:rgba(255,255,255,1);
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
-        padding: 20px;
         height: 600px;
-        border: 1px solid white;
         margin-right: 10px;
+        display:flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: flex-start;
     }
-    
-    p {
+     
+    p.description {
         margin-top: 30px;
+        padding:20px 30px;
     }
     button {
-        margin-right: 30px;
+        border: none;
+        background: none;
+        outline: none;
+    }
+    .button {
+        margin: 50px auto;
         width: 150px;
-        background-color: rgb(255, 0, 0, 0.67);
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
         border-radius: 50px;
         border: none;
         padding: 10px 20px;
@@ -118,8 +127,10 @@ export default {
         font-size: 20px;
         font-weight: 700;
         transition: 0.2s;
+        text-decoration:none;
     }
-    button:hover {
+    
+    .button:hover {
         box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.67);
     }
 </style>

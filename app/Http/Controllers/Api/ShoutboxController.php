@@ -11,7 +11,8 @@ class ShoutboxController extends Controller
 {
     public function getMessages()
     {
-        return Message::orderBy('created_at', 'desc')->get();
+        return Message::all();
+
     }
 
     public function sendMessage(Request $request)

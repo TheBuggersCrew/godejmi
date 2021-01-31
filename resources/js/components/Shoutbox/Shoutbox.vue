@@ -1,30 +1,37 @@
 <template>
     <div class="wrapper">
-        <section class="displayer">
+        <header>Shoutbox</header>
+        <section @mousedown="clearInterval" @mouseup="interval" class="displayer">
             <div v-for="(data, i) in shoutBoxContent" :key="i" class="message">
-                <h3>{{ data.created_at }} || {{ data.nickname }}:</h3>
+                <h3 class="nickname">{{ data.nickname }}:</h3>
                 <h3>{{ data.content }}</h3>
             </div>
         </section>
-        <textarea v-model="message" class="input-message"></textarea>
-        <button @click="sendMessage">></button>
+        <textarea placeholder="Type here" v-on:keyup.enter="sendMessage" v-model="message" class="input-message"></textarea>
+        <button @click="sendMessage"><img class="ico" src="/img/send-mail.png"></button>
     </div>
 </template>
 
 <script>
+
 export default {
     data(){
         return {
             message: "",
             shoutBoxContent: {},
-            firstload: true,
+            intervalId: null,
         }
     },
 
     created() {
-        setInterval(this.downloadMessages, 1500)
+        this.interval()
     },
 
+    computed: {
+        displayer() {
+            return document.querySelector(".displayer")
+        },
+    },
 
     methods: {
         sendMessage() {
@@ -36,54 +43,93 @@ export default {
 
         downloadMessages() {
             axios.get("/api/shoutbox/messages")
+
             .then(res => {
                 this.shoutBoxContent = res.data})
-            .then(res => {
-                if(this.firstload) {
-                    const displayer = document.querySelector(".displayer")
-                    displayer.scrollTop = displayer.scrollHeight;
 
-                    this.firstload = !this.firstload
-                }
+            .then(res => {
+                this.displayer.scrollTop = this.displayer.scrollHeight; 
             })
-        }
+        },
+
+        clearInterval() {
+            window.clearInterval(this.intervalId)
+        },
+
+        interval() {
+             this.intervalId = setInterval(this.downloadMessages, 1500);
+         },
     }
 }
 </script>
 
 <style scoped>
+
     .wrapper {
         width: 100%;
         height: 100%;
         position: relative;
     }
-    .displayer {
+    header {
+        font-size: 20px;
+        padding: 15px 25px;
+        text-align: right;
+        color: white;
+        font-weight: 800;
         width: 100%;
-        height: 80%;
-        border: 1px solid black;
+        height: 10%;
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+    }
+    .displayer {
+        background: linear-gradient(to right bottom, rgba(255,255,255,0.9), rgba(0,0,0,0.1));
+        width: 100%;
+        height: 75%;
         overflow-y: scroll;
     }
     .input-message {
+        padding: 10px 20px;
+        color: white;
+        border: 0;
         resize: none;
         width: 100%;
-        height: 20%;
+        height: 15%;
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
     }
 
     button {
+        cursor: pointer;
+        border: none;
+        background: none;
         position: absolute;
-        top: 90%;
-        left: 95%;
-        transform: translate(0%, -50%);
-        border: 1px solide red;
-        border-radius: 50%;
-        font-size: 50px;
-        font-weight: 800;        
+        bottom: 0%;
+        left: 86%;
+        height: 80px;
+        width: 80px;
+        transition: 0.2s
+    }
+
+    button:hover {
+        transform:scale(1.2)
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
     }
 
     .message {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        color: #444444;
         text-align: right;
-        padding: 10px;
-        background-color: #dedede;
-        margin: 10px;
+        border-top: 1px solid #aaaaaa
     }
+
+    .nickname {
+        color: rgba(255,0,0,0.67);
+        margin-bottom: 20px;
+    }
+
+ 
 </style>

@@ -28,6 +28,7 @@
                 <div class="progresstext">
                     <p v-if="questionCounter < questions.length"> Pytanie {{ questionCounter + 1 }} z {{ questions.length }}</p>
                 </div>
+                
                 <div class="button-wrapper">
                     <transition name="bounce">
                         <button v-if="showButton" v-on:click="nextQuestion">Dalej</button>
@@ -202,6 +203,7 @@ div.info {
     margin-right: 35px;
 }
 button {
+    cursor: pointer;
     color: rgb(240, 61, 61, 1);
     font-weight: 500;
     padding: 7px 15px;
@@ -263,7 +265,7 @@ div.option.active {
     .quizContainer {
         width: 700px;
         min-height: 400px;
-        max-height: 500px;
+        max-height: 400px;
     }
     div.question h1 {
         line-height: 26px;
@@ -309,6 +311,8 @@ div.option.active {
     }  
     .quizContainer {
         width: 430px;
+        min-height: 500px;
+        max-height: 500px;
     }
     div.question {
         width: 85%;
