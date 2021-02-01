@@ -76,13 +76,9 @@ export default {
         width: 600px;
         padding: 10px 20px;
         color: rgb(255, 0, 0, 0.67);
-        background-color: rgba(255, 255, 255, 0.65);
+        background-color: rgba(255, 255, 255, 1);
         margin: 0px auto;
         transition: 0.2s;
-    }
-
-    .wrapper:hover {
-        background-color: rgba(255, 255, 255, 1);
     }
 
 

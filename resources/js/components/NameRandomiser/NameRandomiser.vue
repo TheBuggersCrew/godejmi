@@ -27,6 +27,11 @@ export default {
         }
     },
 
+    created() {
+        this.$store.commit("changeLeaveAnimation", "animate__animated animate__backOutLeft"),
+        this.$store.commit("changeEnterAnimation", "animate__animated animate__backInRight")
+    },
+
     methods: {
         getNickname() {
             
@@ -51,6 +56,8 @@ export default {
 
 <style scoped>
     .container {
+        width: 100%;
+        height: 100%; 
         position: relative;
     }
 
@@ -99,6 +106,7 @@ export default {
     }
 
     div.logo img {
+        margin-top: 90px;
         width: 100%;
         height: auto;
     }

@@ -4,11 +4,12 @@
         <section @mousedown="clearInterval" @mouseup="interval" class="displayer">
             <div v-for="(data, i) in shoutBoxContent" :key="i" class="message">
                 <h3 class="nickname">{{ data.nickname }}:</h3>
-                <h3>{{ data.content }}</h3>
+                <br>
+                <h3 class="content">{{ data.content }}</h3>
             </div>
         </section>
         <textarea placeholder="Type here" v-on:keyup.enter="sendMessage" v-model="message" class="input-message"></textarea>
-        <button @click="sendMessage"><img class="ico" src="/img/send-mail.png"></button>
+        <button @click="sendMessage"><img class="ico" src="/img/letter.png"></button>
     </div>
 </template>
 
@@ -35,10 +36,13 @@ export default {
 
     methods: {
         sendMessage() {
-            axios.post("/api/shoutbox/send", {
-                content: this.message
-            })
-        this.message = ""
+            if(this.message !== "") {
+                axios.post("/api/shoutbox/send", {
+                    content: this.message
+                })
+
+                this.message = ""
+            }
         },
 
         downloadMessages() {
@@ -101,15 +105,17 @@ export default {
         border: none;
         background: none;
         position: absolute;
-        bottom: 0%;
+        bottom: 1%;
         left: 86%;
-        height: 80px;
-        width: 80px;
-        transition: 0.2s
+        height: 75px;
+        width: 75px;
+        transition: 0.2s;
+        border-radius: 50%;
     }
 
     button:hover {
-        transform:scale(1.2)
+        transform:scale(1.07);
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.67);
     }
 
     img {
@@ -123,13 +129,28 @@ export default {
         padding: 20px;
         color: #444444;
         text-align: right;
-        border-top: 1px solid #aaaaaa
     }
 
     .nickname {
-        color: rgba(255,0,0,0.67);
-        margin-bottom: 20px;
+        min-width: 180px;
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+        border-radius: 10px 10px 0px 0px;
+        display: inline-block;
+        color: white;
+        padding: 10px 20px;
+        margin: 0 auto;
     }
+
+    .content {
+        background: white;
+        border-radius: 10px 0px 10px 10px;
+        display: inline-block;
+        padding: 15px 20px;
+        min-width: 200px;
+        font-weight: 400;
+    }
+
+
 
  
 </style>

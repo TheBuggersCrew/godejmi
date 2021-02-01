@@ -31,6 +31,11 @@ import Shoutbox from "../Shoutbox/Shoutbox"
 export default {
     components: {
         Shoutbox
+    },
+
+    created() {
+        this.$store.commit("changeLeaveAnimation", "animate__animated animate__backOutRight"),
+        this.$store.commit("changeEnterAnimation", "animate__animated animate__backInLeft")
     }
 }
 
@@ -38,15 +43,15 @@ export default {
 
 <style scoped>
     header {
-            font-size: 20px;
-            padding: 15px 25px;
-            text-align: right;
-            color: white;
-            font-weight: 800;
-            width: 100%;
-            height: 10%;
-            background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
-        }
+        font-size: 20px;
+        padding: 15px 25px;
+        text-align: right;
+        color: white;
+        font-weight: 800;
+        width: 100%;
+        height: 10%;
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+    }
     nav {
         display: flex;
         flex-direction: row;
@@ -96,41 +101,42 @@ export default {
     
     div.element {
         flex:1;
-        background:rgba(255,255,255,1);
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
         box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
         height: 600px;
         margin-right: 10px;
-        display:flex;
         flex-direction: column;
         align-content: center;
         justify-content: flex-start;
     }
      
     p.description {
-        margin-top: 30px;
-        padding:20px 30px;
+        padding: 30px 25px 80px;
+        color: white;
     }
     button {
         border: none;
         background: none;
         outline: none;
+        display: block;
+        margin: 0px auto;
+        width: 170px;
     }
     .button {
-        margin: 50px auto;
-        width: 150px;
-        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+        background: linear-gradient(to right bottom, rgba(255,255,255,0.9), rgba(0,0,0,0.1));
         border-radius: 50px;
         border: none;
         padding: 10px 20px;
         color: white;
-        text-transform: uppercase;
         font-size: 20px;
         font-weight: 700;
         transition: 0.2s;
         text-decoration:none;
+        width: 170px;
+        display: inline-block;
     }
     
     .button:hover {
-        box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.67);
+        box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.67);
     }
 </style>
