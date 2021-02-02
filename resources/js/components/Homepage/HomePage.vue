@@ -14,7 +14,7 @@
                 <div class="imgPreview">
                     <img src="/img/godejmiPreview.png" alt="">
                 </div>
-                <p class="description">Bejsikli normal godej mi. Znane lubiane zbugowane. Kliknij już teraz żeby zostać obrażonym. Super przezwiska. Fajne ksywy. Nowa pulla przewissk co tydzień</p>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. A erat nam at.</p>
                 <button><router-link class="button" :to="{name: 'name-randomiser'}">Przejdź</router-link></button>
             </div>
             <div class="shoutbox-wrapper">

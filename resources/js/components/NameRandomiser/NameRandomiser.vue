@@ -9,7 +9,7 @@
                 <h1 class="displayer">{{ nickname }}</h1>
             </div>
             <button v-if="rerollLimit" v-on:click="getNickname" class="draw"></button>
-            <button v-else class="enough"></button>
+            <button v-else class="enough">Limit wykorzystany</button>
         </div>
         <a class="button" @click="$router.go(-1)">back</a>
     </div>
@@ -96,7 +96,22 @@ export default {
     }
 
     .enough {
-        background-image: url("/img/but3.png");
+        margin-top: 30px;
+        display: block;
+        height: auto;
+        cursor: not-allowed;
+        text-align: center;
+        width: 255px;
+        background: linear-gradient(to right bottom, rgba(255,0,30,0.7) 0%, rgba(255,0,0,0.67) 34%, rgba(255,90,255,0.8) 100%);
+        background: linear-gradient(to right bottom, rgba(161,161,161,0.7) 0%, rgba(79,61,61,0.4) 34%, rgba(3,0,3,0.4) 100%);
+        border-radius: 30px;
+        border: none;
+        padding: 10px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration:none;
     }
 
     div.logo {
