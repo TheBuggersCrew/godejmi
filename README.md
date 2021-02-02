@@ -1,7 +1,9 @@
 <b>THIS PROJECT IS NOT READY YET!</b>
 
-Frontend: DStojecki
-Backend: molu 
+Frontend: <b><b>DStojecki</b>
+
+Backend: <b>molu</b>
+
 
 Navigation in right corner will be not visable in finished project.
 
