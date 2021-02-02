@@ -1,6 +1,6 @@
 <b>THIS PROJECT IS NOT READY YET!</b>
 
-Frontend: <b><b>DStojecki</b>
+Frontend: <b>DStojecki</b>
 
 Backend: <b>molu</b>
 
